@@ -1,22 +1,36 @@
 import React, { Component } from 'react';
-
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import ReduxThunk from 'redux-thunk';
 import { 
 	createBottomTabNavigator, 
 	createStackNavigator, 
 	createSwitchNavigator,
 	createAppContainer
 } from 'react-navigation';
-import { Icon } from 'native-base';
+import { Root, Icon } from 'native-base';
+import reducers from './reducers';
 import HomeScreen from './screens/HomeScreen';
 import OrdersScreen from './screens/OrdersScreen';
 import AuthLoadingScreen from './screens/AuthLoadingScreen';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
+import ProfileScreen from './screens/ProfileScreen';
+import NavigationService from './services/NavigationService';
 
 class App extends Component {
 	render() {
+		const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
 		return (
-			<AppContainer />
+			<Provider store={store}>
+				<Root>
+					<AppContainer 
+						ref={navigatorRef => {
+							NavigationService.setTopLevelNavigator(navigatorRef);
+					}}
+					/>
+				</Root>
+			</Provider>
 		);
 	}
 }
@@ -27,9 +41,12 @@ const HomeStack = createStackNavigator({ HomeScreen });
 
 const OrdersStack = createStackNavigator({ OrdersScreen });
 
+const ProfileStack = createStackNavigator({ ProfileScreen });
+
 const MainTabNavigator = createBottomTabNavigator({
 	Home: HomeStack,
-	Orders: OrdersStack
+	Orders: OrdersStack,
+	Profile: ProfileStack
 },
 {
 	defaultNavigationOptions: ({ navigation }) => ({
@@ -44,6 +61,8 @@ const MainTabNavigator = createBottomTabNavigator({
 				iconName = `ios-star${focused ? '' : '-outline'}`;
 			} else if (routeName === 'Orders') {
 				iconName = `ios-star${focused ? '' : '-outline'}`;
+			} else if (routeName === 'Profile') {
+				iconName = `ios-star${focused ? '' : '-outline'}`;
 			}
 			return <Icon name={iconName} type='Ionicons' style={{ color: '#85BEEB' }} />;
 		},
@@ -57,7 +76,7 @@ const AppSwitchNavigator = createSwitchNavigator({
 	Main: { screen: MainTabNavigator }
 },
 {
-	initialRouteName: 'AuthStack'
+	initialRouteName: 'AuthLoadingScreen'
 }
 );
 

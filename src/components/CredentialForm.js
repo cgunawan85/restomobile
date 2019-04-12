@@ -10,12 +10,15 @@ class CredentialForm extends Component {
 					<Label>Email</Label>
 					<Input 
 						onChangeText={(text) => onEmailChanged(text)}
+						autoCapitalize='none'
 					/>
 				</Item>
 				<Item stackedLabel>
 					<Label>Password</Label>
 					<Input 
 						onChangeText={(text) => onPasswordChanged(text)}
+						autoCapitalize='none'
+						secureTextEntry
 					/>
 				</Item>
 			</Form>

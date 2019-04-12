@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
-import { Container, Content, Button } from 'native-base';
+import { connect } from 'react-redux';
+import { Container, Content, Button, Spinner } from 'native-base';
 import CredentialForm from '../components/CredentialForm';
+import { emailChanged, passwordChanged, loginUser } from '../actions';
 
 class LoginScreen extends Component {
 	static navigationOptions = {
@@ -9,47 +11,52 @@ class LoginScreen extends Component {
 	};
 
 	onEmailChanged(text) {
-		//call action creator here to setState
-		console.log(text);
+		this.props.emailChanged(text);
 	}
 
 	onPasswordChanged(text) {
-		//call action creator here to setState
-		console.log(text);
+		this.props.passwordChanged(text);
 	}
 
 	onLoginButtonPress() {
-		this.props.navigation.navigate('Main');
+		this.props.loginUser({ email: this.props.email, password: this.props.password });
 	}
 
 	onRegisterButtonPress() {
 		this.props.navigation.navigate('RegisterScreen');
 	}
 
+	renderLoginButtonOrSpinner() {
+		if (this.props.loading) {
+			return <Spinner />;
+		}
+		return ( 
+			<Button
+				block
+				onPress={this.onLoginButtonPress.bind(this)}
+			>
+				<Text style={{ color: 'white' }}>Login</Text>
+			</Button>
+		);
+	}
+
 	render() {
-		const { buttonTextStyle, textStyle } = styles;
+		const { textStyle, registerTextStyle } = styles;
 		return (
 			<Container>
 				<Content>
 						<CredentialForm 
-							onEmailChanged={this.onEmailChanged}
-							onPasswordChanged={this.onPasswordChanged}
-							//insert this.props.email after mapping state to props
-							//use emailValue prop to pass to child
+							onEmailChanged={this.onEmailChanged.bind(this)}
+							onPasswordChanged={this.onPasswordChanged.bind(this)}
 						/>
-						<Button 
-							block
-							onPress={this.onLoginButtonPress.bind(this)}
-						>
-							<Text style={buttonTextStyle}>Login</Text>
-						</Button>
+						{this.renderLoginButtonOrSpinner()}
 						<Text style={textStyle}>Don't have an account yet?</Text>
-						<Button
-							block 
+						<Text 
+							style={registerTextStyle}
 							onPress={this.onRegisterButtonPress.bind(this)}
 						>
-							<Text style={buttonTextStyle}>Register First</Text>
-						</Button>
+							Register here
+						</Text>
 				</Content>
 			</Container>
 		);
@@ -64,7 +71,21 @@ const styles = {
 		alignSelf: 'center',
 		paddingTop: 20,
 		paddingBottom: 20	
+	},
+	registerTextStyle: {
+		textAlign: 'center',
+		color: 'blue'
 	}
 };
 
-export default LoginScreen;
+const mapStateToProps = state => {
+	return {
+		email: state.auth.email,
+		password: state.auth.password,
+		loading: state.auth.loading,
+		error: state.auth.error,
+		user: state.auth.user
+	};
+};
+
+export default connect(mapStateToProps, { emailChanged, passwordChanged, loginUser })(LoginScreen);
