@@ -58,7 +58,7 @@ const styles = {
 	cardStyle: {
 		width: 150,
 		borderWidth: 1,
-		borderColor: 'blue'
+		borderColor: 'gray'
 	},
 	imageStyle: {
 		height: 150, 

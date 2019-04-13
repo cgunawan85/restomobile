@@ -15,6 +15,7 @@ class HorizontalFlatList extends Component {
 					renderItem={this.renderCardItem}
 					horizontal
 					keyExtractor={(product) => product.id.toString()}
+					style={{ paddingBottom: 10 }}
 				/>
 			</View>
 		);

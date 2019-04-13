@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Content, H1 } from 'native-base';
+import { Container, Content, Tab, Tabs } from 'native-base';
+import OrderList from '../components/OrderList';
 
 class OrdersScreen extends Component {
 	static navigationOptions = {
@@ -9,20 +10,19 @@ class OrdersScreen extends Component {
 	render() {
 		return (
 			<Container>
-				<Content contentContainerStyle={styles.contentContainerStyle}>
-					<H1>Orders!</H1>
+				<Content>
+					<Tabs>
+						<Tab heading='Pending'>
+							<OrderList />
+						</Tab>
+						<Tab heading='Completed'>
+							<OrderList />
+						</Tab>
+					</Tabs>
 				</Content>
 			</Container>
 		);
 	}
 }
-
-const styles = {
-	contentContainerStyle: {
-		justifyContent: 'center',
-		alignItems: 'center',
-		flex: 1
-	}
-};
 
 export default OrdersScreen;
