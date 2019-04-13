@@ -6,7 +6,10 @@ import {
 	LOGIN_USER, 
 	LOGIN_USER_SUCCESS, 
 	LOGIN_USER_FAIL,
-	LOGOUT_SUCCESS
+	LOGOUT_SUCCESS,
+	REGISTER_USER,
+	REGISTER_USER_SUCCESS,
+	REGISTER_USER_FAIL
 } from './types';
 import NavigationService from '../services/NavigationService';
 
@@ -45,6 +48,21 @@ export const loginUser = ({ email, password }) => {
 			.catch((error) => {
 				renderErrorMessage(error.message);
 				dispatch({ type: LOGIN_USER_FAIL });
+		});
+	};
+};
+
+export const registerUser = ({ email, password }) => {
+	return (dispatch) => {
+		dispatch({ type: REGISTER_USER }); // for loading spinner
+		firebase.auth().createUserWithEmailAndPassword(email, password)
+		.then(user => { 
+			dispatch({ type: REGISTER_USER_SUCCESS, payload: user });
+			NavigationService.navigate('Main');
+		})
+		.catch((error) => {
+			renderErrorMessage(error.message);
+			dispatch({ type: REGISTER_USER_FAIL });
 		});
 	};
 };

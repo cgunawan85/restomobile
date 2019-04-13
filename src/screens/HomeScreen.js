@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text, Image } from 'react-native';
 import { connect } from 'react-redux';
-import { Container, Content, H1, Button } from 'native-base';
+import { Container, Content, Button, H1 } from 'native-base';
 import { signOut } from '../actions';
+import { products } from '../data/productData';
+import { LOGO } from '../images';
+
+import HorizontalFlatList from '../components/HorizontalFlatList';
+import HomeBanner from '../components/HomeBanner';
 
 class HomeScreen extends Component {
 	static navigationOptions = {
-		title: 'Home',
+		title: 'RestoDepot'
 	};
 
 	onLogoutButtonPress() {
@@ -14,15 +19,23 @@ class HomeScreen extends Component {
 	}
 
 	render() {
+		const { titleStyle } = styles;
 		return (
 			<Container>
-				<Content contentContainerStyle={styles.contentContainerStyle}>
-						<H1>Home!</H1>
-						<Button
-							onPress={this.onLogoutButtonPress.bind(this)}
-						>
-							<Text>Logout</Text>
-						</Button>
+				<Content>
+					<HomeBanner />
+					<H1 style={titleStyle}>Best Sellers</H1>
+					<HorizontalFlatList products={products} />
+					<H1 style={titleStyle}>Recently Bought</H1>
+					<HorizontalFlatList products={products} />
+					<H1 style={titleStyle}>Best Deals</H1>
+					<HorizontalFlatList products={products} />
+					<Button
+						onPress={this.onLogoutButtonPress.bind(this)}
+						block
+					>
+						<Text style={{ color: 'white' }}>Logout</Text>
+					</Button>
 				</Content>
 			</Container>
 		);
@@ -30,10 +43,10 @@ class HomeScreen extends Component {
 }
 
 const styles = {
-	contentContainerStyle: {
-		justifyContent: 'center',
-		alignItems: 'center',
-		flex: 1
+	titleStyle: {
+		paddingTop: 15,
+		paddingBottom: 15,
+		paddingLeft: 7
 	}
 };
 

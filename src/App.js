@@ -16,6 +16,7 @@ import AuthLoadingScreen from './screens/AuthLoadingScreen';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import ProfileScreen from './screens/ProfileScreen';
+import CartScreen from './screens/CartScreen';
 import NavigationService from './services/NavigationService';
 
 class App extends Component {
@@ -43,10 +44,13 @@ const OrdersStack = createStackNavigator({ OrdersScreen });
 
 const ProfileStack = createStackNavigator({ ProfileScreen });
 
+const CartStack = createStackNavigator({ CartScreen });
+
 const MainTabNavigator = createBottomTabNavigator({
 	Home: HomeStack,
 	Orders: OrdersStack,
-	Profile: ProfileStack
+	Profile: ProfileStack,
+	Cart: CartStack,
 },
 {
 	defaultNavigationOptions: ({ navigation }) => ({
@@ -62,6 +66,8 @@ const MainTabNavigator = createBottomTabNavigator({
 			} else if (routeName === 'Orders') {
 				iconName = `ios-star${focused ? '' : '-outline'}`;
 			} else if (routeName === 'Profile') {
+				iconName = `ios-star${focused ? '' : '-outline'}`;
+			} else if (routeName === 'Cart') {
 				iconName = `ios-star${focused ? '' : '-outline'}`;
 			}
 			return <Icon name={iconName} type='Ionicons' style={{ color: '#85BEEB' }} />;
