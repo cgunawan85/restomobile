@@ -8,6 +8,7 @@ import { LOGO } from '../images';
 
 import HorizontalFlatList from '../components/HorizontalFlatList';
 import HomeBanner from '../components/HomeBanner';
+import CategoryTable from '../components/CategoryTable';
 
 class HomeScreen extends Component {
 	static navigationOptions = {
@@ -24,6 +25,8 @@ class HomeScreen extends Component {
 			<Container>
 				<Content>
 					<HomeBanner />
+					<H1 style={titleStyle}>Categories</H1>
+					<CategoryTable />
 					<H1 style={titleStyle}>Best Sellers</H1>
 					<HorizontalFlatList products={products} />
 					<H1 style={titleStyle}>Recently Bought</H1>
