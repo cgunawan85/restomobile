@@ -17,9 +17,10 @@ class CategoryButton extends Component {
 const styles = {
 	containerStyle: {
 		backgroundColor: 'blue',
-		width: '50%',
+		width: '49%',
 		padding: 10,
 		marginBottom: 15,
+		marginRight: 2,
 		borderRadius: 8
 	},
 	textStyle: {

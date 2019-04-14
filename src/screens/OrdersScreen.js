@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Content, Tab, Tabs } from 'native-base';
 import OrderList from '../components/OrderList';
+import { orders } from '../data/orderData';
 
 class OrdersScreen extends Component {
 	static navigationOptions = {
@@ -13,10 +14,10 @@ class OrdersScreen extends Component {
 				<Content>
 					<Tabs>
 						<Tab heading='Pending'>
-							<OrderList />
+							<OrderList orders={orders} />
 						</Tab>
 						<Tab heading='Completed'>
-							<OrderList />
+							<OrderList orders={orders} />
 						</Tab>
 					</Tabs>
 				</Content>

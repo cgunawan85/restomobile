@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Image } from 'react-native';
+import { Image, TouchableOpacity } from 'react-native';
 import { 
 	Card, 
 	CardItem,
 	Text,
 	Body
 } from 'native-base';
+import { withNavigation } from 'react-navigation';
 
 class HorizontalFlatListItem extends Component {
 	render() {
@@ -20,36 +21,41 @@ class HorizontalFlatListItem extends Component {
 		} = styles;
 
 		return (
-			<Card style={cardStyle}>
-				<CardItem cardBody>
-					<Image 
-						source={{ uri: photo }} 
-						style={imageStyle} 
-					/>
-				</CardItem>
-				<CardItem>
-					<Body>
-						<Text 
-							style={vendorNameTextStyle}
-							numberOfLines={1}
-						>
-							{brand}
-						</Text>
-						<Text 
-							style={productNameTextStyle}
-							numberOfLines={1}
-						>
-							{name}
-						</Text>
-						<Text 
-							style={priceTextStyle}
-							numberOfLines={1}
-						>
-							{`IDR ${price.toLocaleString()}`}
-						</Text>
-					</Body>
-				</CardItem>
-			</Card>
+			<TouchableOpacity 
+				onPress={() => 
+					this.props.navigation.navigate('ProductDetailScreen', { product: this.props.product })}
+			>
+				<Card style={cardStyle}>
+					<CardItem cardBody>
+						<Image 
+							source={{ uri: photo }} 
+							style={imageStyle} 
+						/>
+					</CardItem>
+					<CardItem>
+						<Body>
+							<Text 
+								style={vendorNameTextStyle}
+								numberOfLines={1}
+							>
+								{brand}
+							</Text>
+							<Text 
+								style={productNameTextStyle}
+								numberOfLines={1}
+							>
+								{name}
+							</Text>
+							<Text 
+								style={priceTextStyle}
+								numberOfLines={1}
+							>
+								{`IDR ${price.toLocaleString()}`}
+							</Text>
+						</Body>
+					</CardItem>
+				</Card>
+			</TouchableOpacity>
 		);
 	}
 }
@@ -78,4 +84,4 @@ const styles = {
 	}
 };
 
-export default HorizontalFlatListItem;
+export default withNavigation(HorizontalFlatListItem);

@@ -3,15 +3,23 @@ import { ListItem, Left, Thumbnail, Body, Text, Right, Button } from 'native-bas
 
 class OrderListItem extends Component {
 	render() {
+		const { order_id, delivery_status, items } = this.props.order;
+		const { productNameTextStyle } = styles;
+
 		return (
 			<ListItem thumbnail>
 				<Left>
 					<Thumbnail square source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/coldmoo-f07a2.appspot.com/o/photo1.JPG?alt=media&token=7d9ae1f8-f2b0-4133-b61c-2fd536cdac20' }} />
 				</Left>
 				<Body>
-					<Text>Order # 1234567</Text>
-					<Text>Beras and 2 more items</Text>
-					<Text note numberOfLines={1}>Courier Out For Delivery</Text>
+					<Text>{`Order #${order_id}`}</Text>
+					<Text 
+						numberOfLines={2}
+						style={productNameTextStyle}
+					>
+							{`${items[0].name} and ${items.length - 1} more items`}
+					</Text>
+					<Text note numberOfLines={1}>{`Delivery status = ${delivery_status}`}</Text>
 				</Body>
 				<Right>
 					<Button transparent>
@@ -22,5 +30,11 @@ class OrderListItem extends Component {
 		);
 	}
 }
+
+const styles = {
+	productNameTextStyle: {
+		fontSize: 14
+	}
+};
 
 export default OrderListItem;

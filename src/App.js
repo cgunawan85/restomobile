@@ -17,6 +17,7 @@ import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import CartScreen from './screens/CartScreen';
+import ProductDetailScreen from './screens/ProductDetailScreen';
 import NavigationService from './services/NavigationService';
 
 class App extends Component {
@@ -38,7 +39,7 @@ class App extends Component {
 
 const AuthStack = createStackNavigator({ LoginScreen, RegisterScreen });
 
-const HomeStack = createStackNavigator({ HomeScreen });
+const HomeStack = createStackNavigator({ HomeScreen, ProductDetailScreen });
 
 const OrdersStack = createStackNavigator({ OrdersScreen });
 
