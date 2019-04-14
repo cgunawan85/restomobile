@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
 import { connect } from 'react-redux';
 import { Container, Content, Button } from 'native-base';
 import { signOut } from '../actions';
@@ -10,6 +10,7 @@ import HomeBanner from '../components/HomeBanner';
 import HomeLogo from '../components/HomeLogo';
 import CategoryTable from '../components/CategoryTable';
 import SearchBar from '../components/SearchBar';
+import ProductList from '../components/ProductList';
 import Seperator from '../components/common/Seperator';
 
 class HomeScreen extends Component {
@@ -46,6 +47,8 @@ class HomeScreen extends Component {
 					<Text style={titleStyle}>Best Deals</Text>
 					<HorizontalFlatList products={products} />
 					<Seperator />
+					<Text style={titleStyle}>Products</Text>
+					<ProductList products={products} />
 					
 					<Button
 						onPress={this.onLogoutButtonPress.bind(this)}

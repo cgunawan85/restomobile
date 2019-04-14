@@ -52,4 +52,30 @@ export const products = [
 		width: 30,
 		photo: 'https://firebasestorage.googleapis.com/v0/b/coldmoo-f07a2.appspot.com/o/photo1.JPG?alt=media&token=7d9ae1f8-f2b0-4133-b61c-2fd536cdac20'
 	},
+	{
+		id: 4,
+		brand: 'Samsung',
+		category: 'Mobile Phones',
+		name: 'S10 Mobile Phone',
+		description: 'Samsung make the best phones in the world!',
+		price: 7000000,
+		vendor: 'PT. Samsung Indonesia',
+		weight: 10,
+		height: 50,
+		width: 30,
+		photo: 'https://firebasestorage.googleapis.com/v0/b/coldmoo-f07a2.appspot.com/o/photo1.JPG?alt=media&token=7d9ae1f8-f2b0-4133-b61c-2fd536cdac20'
+	},
+	{
+		id: 5,
+		brand: 'Apple',
+		category: 'Mobile Phones',
+		name: 'iPhone X',
+		description: 'Apple make the best phones in the world!',
+		price: 7000000,
+		vendor: 'PT. Apple Indonesia',
+		weight: 10,
+		height: 50,
+		width: 30,
+		photo: 'https://firebasestorage.googleapis.com/v0/b/coldmoo-f07a2.appspot.com/o/photo1.JPG?alt=media&token=7d9ae1f8-f2b0-4133-b61c-2fd536cdac20'
+	},
 ];

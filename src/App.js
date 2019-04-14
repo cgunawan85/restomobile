@@ -10,6 +10,7 @@ import {
 } from 'react-navigation';
 import { Root, Icon } from 'native-base';
 import reducers from './reducers';
+
 import HomeScreen from './screens/HomeScreen';
 import OrdersScreen from './screens/OrdersScreen';
 import AuthLoadingScreen from './screens/AuthLoadingScreen';
@@ -18,6 +19,7 @@ import RegisterScreen from './screens/RegisterScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import CartScreen from './screens/CartScreen';
 import ProductDetailScreen from './screens/ProductDetailScreen';
+
 import NavigationService from './services/NavigationService';
 
 class App extends Component {
@@ -50,8 +52,8 @@ const CartStack = createStackNavigator({ CartScreen });
 const MainTabNavigator = createBottomTabNavigator({
 	Home: HomeStack,
 	Orders: OrdersStack,
-	Profile: ProfileStack,
 	Cart: CartStack,
+	Profile: ProfileStack,
 },
 {
 	defaultNavigationOptions: ({ navigation }) => ({
@@ -71,7 +73,13 @@ const MainTabNavigator = createBottomTabNavigator({
 			} else if (routeName === 'Cart') {
 				iconName = `ios-star${focused ? '' : '-outline'}`;
 			}
-			return <Icon name={iconName} type='Ionicons' style={{ color: '#85BEEB' }} />;
+			return (
+				<Icon 
+					name={iconName} 
+					type='Ionicons' 
+					style={{ paddingTop: 5, color: '#85BEEB', fontSize: 24 }} 
+				/>
+			);
 		},
 	})
 }

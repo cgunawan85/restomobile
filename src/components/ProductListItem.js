@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, TouchableOpacity } from 'react-native';
+import { Image, TouchableOpacity, Dimensions } from 'react-native';
 import { 
 	Card, 
 	CardItem,
@@ -8,7 +8,7 @@ import {
 } from 'native-base';
 import { withNavigation } from 'react-navigation';
 
-class HorizontalFlatListItem extends Component {
+class ProductListItem extends Component {
 	render() {
 		const { photo, brand, name, price } = this.props.product;
 
@@ -62,12 +62,12 @@ class HorizontalFlatListItem extends Component {
 
 const styles = {
 	cardStyle: {
-		width: 150,
+		width: (Dimensions.get('window').width / 2.1),
 		borderWidth: 1,
-		borderColor: 'gray',
+		borderColor: 'gray'
 	},
 	imageStyle: {
-		height: 150, 
+		height: 200, 
 		width: null, 
 		flex: 1
 	},
@@ -84,4 +84,4 @@ const styles = {
 	}
 };
 
-export default withNavigation(HorizontalFlatListItem);
+export default withNavigation(ProductListItem);
