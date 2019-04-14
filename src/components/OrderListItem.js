@@ -19,7 +19,9 @@ class OrderListItem extends Component {
 					>
 							{`${items[0].name} and ${items.length - 1} more items`}
 					</Text>
-					<Text note numberOfLines={1}>{`Delivery status = ${delivery_status}`}</Text>
+					<Text note>Paid on Apr 14, 2019</Text>
+					{/* Use delivery status */}
+					<Text note numberOfLines={1}>Order Processing</Text>
 				</Body>
 				<Right>
 					<Button transparent>

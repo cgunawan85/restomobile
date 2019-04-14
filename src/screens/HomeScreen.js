@@ -6,8 +6,7 @@ import { signOut } from '../actions';
 
 import { products } from '../data/productData';
 import HorizontalFlatList from '../components/HorizontalFlatList';
-import HomeBanner from '../components/HomeBanner';
-import HomeLogo from '../components/HomeLogo';
+import BannerCarousel from '../components/BannerCarousel';
 import CategoryTable from '../components/CategoryTable';
 import SearchBar from '../components/SearchBar';
 import ProductList from '../components/ProductList';
@@ -29,8 +28,7 @@ class HomeScreen extends Component {
 			<Container>
 				<SearchBar />
 				<Content>
-					<HomeLogo />
-					<HomeBanner />
+					<BannerCarousel />
 					<Seperator />
 					<Text style={titleStyle}>Categories</Text>
 					<CategoryTable />
@@ -49,7 +47,6 @@ class HomeScreen extends Component {
 					<Seperator />
 					<Text style={titleStyle}>Products</Text>
 					<ProductList products={products} />
-					
 					<Button
 						onPress={this.onLogoutButtonPress.bind(this)}
 						block

@@ -17,8 +17,7 @@ function HomeBanner() {
 
 const styles = {
 	imageStyle: {
-		height: 170,
-		width: null
+
 	}
 };
 
