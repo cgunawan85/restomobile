@@ -1,25 +1,30 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Image } from 'react-native';
 import Swiper from 'react-native-swiper';
+import { 
+	BANNER_SUPPLIER_ONLINE, 
+	BANNER_FREE_SHIPPING, 
+	BANNER_BETA_PHASE 
+} from '../images';
 
 
 class BannerCarousel extends Component {
 	render() {
-		const { containerStyle, slide1Style, slide2Style, slide3Style, textStyle } = styles;
+		const { containerStyle, slide1Style, slide2Style, slide3Style } = styles;
 		return (
 			<Swiper 
 				style={containerStyle}  
 				autoplay
-				autoplayTimeout={4.5}
+				autoplayTimeout={5}
 			>
 				<View style={slide1Style}>
-					<Text style={textStyle}>Hello Swiper</Text>
+					<Image source={BANNER_SUPPLIER_ONLINE} />
 				</View>
 				<View style={slide2Style}>
-					<Text style={textStyle}>Beautiful</Text>
+					<Image source={BANNER_FREE_SHIPPING} />
 				</View>
 				<View style={slide3Style}>
-					<Text style={textStyle}>And simple</Text>
+					<Image source={BANNER_BETA_PHASE} />
 				</View>
 			</Swiper>
 	);
@@ -47,11 +52,6 @@ const styles = {
 		justifyContent: 'center',
 		alignItems: 'center',
 		backgroundColor: '#92BBD9',
-	},
-	textStyle: {
-		color: '#fff',
-		fontSize: 30,
-		fontWeight: 'bold',
 	}
 };
 
