@@ -30,7 +30,7 @@ class AuthLoadingScreen extends Component {
 				<ActivityIndicator />
 				<StatusBar barStyle="default" />
 			</View>
-			);
+		);
 	}
 }
 

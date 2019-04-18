@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ListItem, Left, Thumbnail, Body, Text, Right, Button } from 'native-base';
+import { withNavigation } from 'react-navigation';
 
 class OrderListItem extends Component {
 	render() {
@@ -28,7 +29,11 @@ class OrderListItem extends Component {
 					<Text note numberOfLines={1}>Order Processing</Text>
 				</Body>
 				<Right>
-					<Button transparent>
+					<Button 
+						transparent
+						onPress={() => 
+							this.props.navigation.navigate('OrderDetailsScreen', { order: this.props.order })}
+					>
 						<Text>View</Text>
 					</Button>
 				</Right>
@@ -43,4 +48,4 @@ const styles = {
 	}
 };
 
-export default OrderListItem;
+export default withNavigation(OrderListItem);

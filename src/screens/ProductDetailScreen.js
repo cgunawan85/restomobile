@@ -77,7 +77,11 @@ class ProductDetailScreen extends Component {
 	}
 
 	render() {
+		const { navigation } = this.props;
+		const product = navigation.getParam('product');
+		const { addToCartButtonContainerStyle } = styles;
 		const page = this.state.page;
+
 		let segmentContent = null;
 		if (page === 1) {
 			segmentContent = (
@@ -111,10 +115,6 @@ class ProductDetailScreen extends Component {
 				</View>
 			);
 		}
-
-		const { navigation } = this.props;
-		const product = navigation.getParam('product');
-		const { addToCartButtonContainerStyle } = styles;
 		
 		return (
 			<Container>
@@ -144,7 +144,7 @@ class ProductDetailScreen extends Component {
 						<ProductVendor />
 						<Seperator />
 						
-						<Segment>
+						<Segment style={{ paddingTop: 10 }}>
 							<Button 
 								first 
 								active={this.state.descriptionSegmentActive}

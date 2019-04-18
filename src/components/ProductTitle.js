@@ -30,7 +30,7 @@ class ProductTitle extends Component {
 								textAlign: 'right' 
 							}}
 						>
-						{price}
+						{`IDR ${price.toLocaleString()}`}
 						</Text>
 					</View>
 					<View style={{ flexDirection: 'row', paddingTop: 10 }}>

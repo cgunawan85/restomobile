@@ -1,9 +1,18 @@
 import React from 'react';
 import { Modal, Text, View } from 'react-native';
 import { Button, Card } from 'native-base';
+import NumericInput from 'react-native-numeric-input';
 
 function ConfirmAddToCart({ modalVisible, onAccept, onDecline }) {
-	const { containerStyle, textStyle, cardStyle, buttonTextStyle } = styles;
+	const { 
+		containerStyle, 
+		textStyle, 
+		cardStyle,
+		buttonContainerStyle,
+		numericInputContainerStyle, 
+		buttonStyle, 
+		buttonTextStyle 
+	} = styles;
 
 	return (
 		<Modal
@@ -14,15 +23,32 @@ function ConfirmAddToCart({ modalVisible, onAccept, onDecline }) {
 		>
 			<View style={containerStyle}>
 				<Card style={cardStyle}>
-					<Text style={textStyle}>
-						How many do you want?
-					</Text>
-					<Button onPress={onAccept}>
-						<Text style={buttonTextStyle}>Confirm</Text>
-					</Button>
-					<Button onPress={onDecline}>
-						<Text style={buttonTextStyle}>Cancel</Text>
-					</Button>
+					<Text style={textStyle}>How many do you need?</Text>
+					<View style={numericInputContainerStyle}>
+						<NumericInput
+							onChange={(value) => console.log(value)} 
+							initValue={1}
+							minValue={1}
+						/>
+					{/* Need to add value here and use redux to implement into state */}
+					</View>
+					<View style={buttonContainerStyle}>
+						<Button 
+							bordered 
+							danger 
+							style={buttonStyle} 
+							onPress={onDecline}
+						>
+							<Text>Cancel</Text>
+						</Button>
+						<Button
+							success 
+							style={buttonStyle} 
+							onPress={onAccept}
+						>
+							<Text style={buttonTextStyle}>Confirm</Text>
+						</Button>
+					</View>
 				</Card>
 			</View>
 		</Modal>
@@ -31,14 +57,13 @@ function ConfirmAddToCart({ modalVisible, onAccept, onDecline }) {
 
 const styles = {
 	cardStyle: {
-		justifyContent: 'center',
 		backgroundColor: 'white',
-		height: 500
+		flex: 0.3,
 	},
 	textStyle: {
-		flex: 1,
 		fontSize: 18,
 		textAlign: 'center',
+		paddingTop: 20,
 		lineHeight: 40
 	},
 	containerStyle: {
@@ -46,6 +71,20 @@ const styles = {
 		position: 'relative',
 		flex: 1,
 		justifyContent: 'center'
+	},
+	numericInputContainerStyle: {
+		alignItems: 'center', 
+		paddingTop: 20
+	},
+	buttonContainerStyle: {
+		flexDirection: 'row',
+		flex: 1,
+		justifyContent: 'space-around'
+	},
+	buttonStyle: {
+		alignSelf: 'center',
+		paddingRight: 15,
+		paddingLeft: 15
 	},
 	buttonTextStyle: {
 		color: 'white'
