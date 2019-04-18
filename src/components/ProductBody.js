@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
-import { Card, H1 } from 'native-base';
+import { Card, Accordion } from 'native-base';
+
+const dataArray = [
+		{ title: 'Description', content: 'This is a product description. This is an amazing product fit for a king! This cheese is expensive. These cookies are expensive' },
+		{ title: 'Specifications', content: 'Lorem ipsum dolor sit amet' },
+		{ title: 'Reviews', content: 'Lorem ipsum dolor sit amet' }
+	];
 
 class ProductBody extends Component {
 	render() {
 		const { cardStyle } = styles;
 		return (
-			<Card style={cardStyle}>
-				<H1>Description, specs and reviews</H1>
+			<Card 
+				transparent 
+				style={cardStyle}
+			>
+				<Accordion dataArray={dataArray} expanded={0} />
 			</Card>
 		);
 	}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image } from 'react-native';
+import { Image, Dimensions } from 'react-native';
 import { Card } from 'native-base';
 
 class ProductImage extends Component {
@@ -8,15 +8,21 @@ class ProductImage extends Component {
 		const { cardStyle, imageStyle } = styles;
 		return (
 			<Card style={cardStyle}>
-				<Image style={imageStyle} source={{ uri: photo }} />
+				<Image 
+					style={imageStyle} 
+					source={{ uri: photo }} 
+					resizeMode='contain'
+				/>
 			</Card>
 		);
 	}
 }
 
+const screenHeight = Dimensions.get('screen').height;
+
 const styles = {
 	cardStyle: {
-		flex: 0.6,
+		height: screenHeight / 2.5,
 		padding: 5,
 		borderWidth: 1
 	},
