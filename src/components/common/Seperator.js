@@ -6,7 +6,7 @@ function Seperator() {
 		<View 
 			style={{ 
 				backgroundColor: '#E5E5E5', 
-				paddingVertical: 2 
+				paddingVertical: 1 
 			}}
 		/>
 	);

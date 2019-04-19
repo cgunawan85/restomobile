@@ -8,6 +8,8 @@ import {
 	Text,
 	Icon 
 } from 'native-base';
+import OrderDetailsList from '../components/OrderDetailsList';
+import OrderDetailsPriceTotal from '../components/OrderDetailsPriceTotal';
 import Seperator from '../components/common/Seperator';
 import { ORDER_STATUS_1, ORDER_STATUS_2, ORDER_STATUS_3, ORDER_STATUS_4, } from '../images';
 
@@ -86,9 +88,9 @@ class OrderDetailsScreen extends Component {
 						<View style={vendorLogoContainerStyle}>
 							<Image style={vendorLogoImageStyle} source={{ uri: order.vendor_logo }} />
 						</View>
-						<Text>{order.date}</Text>
 						<H2 style={vendorTitleStyle}>{order.vendor}</H2>
 						<Text>{`Order #${order.order_id}`}</Text>
+						<Text>{order.date}</Text>
 						{this.renderPaidOrNotPaid()}
 					</Card>
 					<Seperator />
@@ -97,14 +99,23 @@ class OrderDetailsScreen extends Component {
 					</Card>
 					<Seperator />
 					<Card transparent style={orderDeliverySectionStyle}>
+						<View style={orderDeliveryDestinationSectionStyle}>
+							<Icon 
+								name='paper-plane' 
+								type='SimpleLineIcons' 
+								style={{ fontSize: 18 }} 
+							/>
+							<Text style={{ color: '#444444', fontSize: 14 }}>Delivered By</Text>
+							<Text style={{ fontWeight: '600', fontSize: 14 }}>Go-Jek Same Day</Text>
+						</View>
 						<View style={orderDeliveryDateSectionStyle}>
 							<Icon 
 								name='calendar' 
 								type='SimpleLineIcons' 
 								style={{ fontSize: 18 }} 
 							/>
-							<Text style={{ color: '#444444' }}>Delivery Date</Text>
-							<Text style={{ fontWeight: '600' }}>{order.date}</Text>
+							<Text style={{ color: '#444444', fontSize: 14 }}>Delivery Date</Text>
+							<Text style={{ fontWeight: '600', fontSize: 14 }}>{order.date}</Text>
 						</View>
 						<View style={orderDeliveryDestinationSectionStyle}>
 							<Icon 
@@ -112,11 +123,14 @@ class OrderDetailsScreen extends Component {
 								type='SimpleLineIcons' 
 								style={{ fontSize: 18 }} 
 							/>
-							<Text style={{ color: '#444444' }}>Delivered To</Text>
-							<Text style={{ fontWeight: '600' }}>Home</Text>
+							<Text style={{ color: '#444444', fontSize: 14 }}>Delivered To</Text>
+							<Text style={{ fontWeight: '600', fontSize: 14 }}>Home</Text>
 						</View>
 					</Card>
 					<Seperator />
+					<OrderDetailsList order={order} />
+					<Seperator />
+					<OrderDetailsPriceTotal order={order} />
 				</Content>
 			</Container>
 		);
@@ -125,34 +139,30 @@ class OrderDetailsScreen extends Component {
 
 const styles = {
 	orderTitleSectionStyle: {
-		alignItems: 'center', 
-		paddingTop: 20, 
-		paddingBottom: 20
+		alignItems: 'center',
+		paddingVertical: 20
 	},
 	vendorLogoContainerStyle: {
 		paddingBottom: 15 
 	},
+	// change this fixed dimensions
 	vendorLogoImageStyle: {
 		height: 100, 
 		width: 100
 	},
 	vendorTitleStyle: {
-		paddingTop: 10, 
-		paddingBottom: 10
+		paddingVertical: 10
 	},
 	orderDeliverySectionStyle: {
 		flexDirection: 'row', 
-		justifyContent: 'space-around'
+		justifyContent: 'space-around',
+		paddingVertical: 20
 	},
 	orderDeliveryDateSectionStyle: {
-		alignItems: 'center', 
-		paddingTop: 20, 
-		paddingBottom: 20
+		alignItems: 'center'
 	},
 	orderDeliveryDestinationSectionStyle: {
-		alignItems: 'center', 
-		paddingTop: 20, 
-		paddingBottom: 20
+		alignItems: 'center'
 	}
 };
 
