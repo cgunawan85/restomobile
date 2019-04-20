@@ -16,7 +16,7 @@ import OrdersScreen from './screens/OrdersScreen';
 import AuthLoadingScreen from './screens/AuthLoadingScreen';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
-import ProfileScreen from './screens/ProfileScreen';
+import SettingsScreen from './screens/SettingsScreen';
 import CartScreen from './screens/CartScreen';
 import ProductDetailScreen from './screens/ProductDetailScreen';
 import OrderDetailsScreen from './screens/OrderDetailsScreen';
@@ -45,7 +45,7 @@ const HomeStack = createStackNavigator({ HomeScreen, ProductDetailScreen });
 
 const OrdersStack = createStackNavigator({ OrdersScreen, OrderDetailsScreen });
 
-const ProfileStack = createStackNavigator({ ProfileScreen });
+const SettingsStack = createStackNavigator({ SettingsScreen });
 
 const CartStack = createStackNavigator({ CartScreen });
 
@@ -53,7 +53,7 @@ const MainTabNavigator = createBottomTabNavigator({
 	Home: HomeStack,
 	Orders: OrdersStack,
 	Cart: CartStack,
-	Profile: ProfileStack,
+	Settings: SettingsStack,
 },
 {
 	defaultNavigationOptions: ({ navigation }) => ({
@@ -68,7 +68,7 @@ const MainTabNavigator = createBottomTabNavigator({
 				iconName = `ios-star${focused ? '' : '-outline'}`;
 			} else if (routeName === 'Orders') {
 				iconName = `ios-star${focused ? '' : '-outline'}`;
-			} else if (routeName === 'Profile') {
+			} else if (routeName === 'Settings') {
 				iconName = `ios-star${focused ? '' : '-outline'}`;
 			} else if (routeName === 'Cart') {
 				iconName = `ios-star${focused ? '' : '-outline'}`;

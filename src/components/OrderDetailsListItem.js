@@ -26,7 +26,7 @@ class OrderDetailsListItem extends Component {
 				</View>
 
 				<View style={textContainerStyle}>
-					<Text numberOfLines={2} style={textStyle}>{`IDR ${item.price}`}</Text>
+					<Text numberOfLines={2} style={textStyle}>{`IDR ${item.price.toLocaleString()}`}</Text>
 				</View>
 			</Card>
 		);

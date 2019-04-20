@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { Container, Content, H1 } from 'native-base';
 
-class ProfileScreen extends Component {
+class SettingsScreen extends Component {
 	static navigationOptions = {
-		title: 'Profile',
+		title: 'Settings',
 	};
 	
 	render() {
 		return (
 			<Container>
 				<Content contentContainerStyle={styles.contentContainerStyle}>
-						<H1>Profile!</H1>
+						<H1>Settings!</H1>
 				</Content>
 			</Container>
 		);
@@ -25,4 +25,4 @@ const styles = {
 	}
 };
 
-export default ProfileScreen;
+export default SettingsScreen;

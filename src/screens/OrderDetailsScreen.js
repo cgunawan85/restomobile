@@ -6,12 +6,18 @@ import {
 	Content,
 	H2,
 	Text,
-	Icon 
+	Icon,
+	Button 
 } from 'native-base';
 import OrderDetailsList from '../components/OrderDetailsList';
 import OrderDetailsPriceTotal from '../components/OrderDetailsPriceTotal';
 import Seperator from '../components/common/Seperator';
-import { ORDER_STATUS_1, ORDER_STATUS_2, ORDER_STATUS_3, ORDER_STATUS_4, } from '../images';
+import { 
+	ORDER_STATUS_1, 
+	ORDER_STATUS_2, 
+	ORDER_STATUS_3, 
+	ORDER_STATUS_4, 
+} from '../images';
 
 class OrderDetailsScreen extends Component {
 	static navigationOptions = {
@@ -23,13 +29,23 @@ class OrderDetailsScreen extends Component {
 		if (order.payment_status === 1) {
 			return (
 				<View style={{ paddingTop: 20 }}>
-					<Text style={{ backgroundColor: 'green', color: 'white', padding: 10 }}>Paid</Text>
+					<Text 
+						style={{ 
+							backgroundColor: 'green', 
+							color: 'white', 
+							padding: 15 
+						}}
+					>
+						Paid
+					</Text>
 				</View>
 			);
 		}
 		return (
 			<View style={{ paddingTop: 20 }}>
-				<Text style={{ backgroundColor: 'red', color: 'white', padding: 10 }}>Not Paid</Text>
+				<Button danger>
+					<Text style={{ color: 'white' }}>Not Paid, Tap to Pay Now</Text>
+				</Button>
 			</View>
 		);
 	}
@@ -129,7 +145,6 @@ class OrderDetailsScreen extends Component {
 					</Card>
 					<Seperator />
 					<OrderDetailsList order={order} />
-					<Seperator />
 					<OrderDetailsPriceTotal order={order} />
 				</Content>
 			</Container>
