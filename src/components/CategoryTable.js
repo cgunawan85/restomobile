@@ -7,12 +7,12 @@ class CategoryTable extends Component {
 		const { containerStyle } = styles;
 		return (
 			<View style={containerStyle}>
-				<CategoryButton style={{ backgroundColor: 'orange' }}>Food & Beverages</CategoryButton>
-				<CategoryButton style={{ backgroundColor: 'green' }}>Equipment</CategoryButton>
-				<CategoryButton style={{ backgroundColor: 'purple' }}>Cleaning Supplies</CategoryButton>
-				<CategoryButton style={{ backgroundColor: 'brown' }}>Coffee</CategoryButton>
-				<CategoryButton style={{ backgroundColor: 'gray' }}>Disposables</CategoryButton>
-				<CategoryButton>Test Category</CategoryButton>
+				<CategoryButton style={{ backgroundColor: 'orange' }} buttonColors={['#4c669f', '#3b5998', '#192f6a']}>Food & Beverages</CategoryButton>
+				<CategoryButton style={{ backgroundColor: 'green' }} buttonColors={['#4c669f', '#3b5998', '#192f6a']}>Equipment</CategoryButton>
+				<CategoryButton style={{ backgroundColor: 'purple' }} buttonColors={['#4c669f', '#3b5998', '#192f6a']}>Cleaning Supplies</CategoryButton>
+				<CategoryButton style={{ backgroundColor: 'brown' }} buttonColors={['#4c669f', '#3b5998', '#192f6a']}>Coffee</CategoryButton>
+				<CategoryButton style={{ backgroundColor: 'gray' }} buttonColors={['#4c669f', '#3b5998', '#192f6a']}>Disposables</CategoryButton>
+				<CategoryButton buttonColors={['#4c669f', '#3b5998', '#192f6a']}>Test Category</CategoryButton>
 			</View>
 		);
 	}

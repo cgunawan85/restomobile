@@ -53,7 +53,6 @@ class HomeScreen extends Component {
 					>
 						<Text style={{ color: 'white' }}>Logout</Text>
 					</Button>
-
 				</Content>
 			</Container>
 		);

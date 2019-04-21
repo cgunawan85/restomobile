@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { Text, Card, Thumbnail, Button } from 'native-base';
+import { withNavigation } from 'react-navigation';
 
 class ProductVendor extends Component {
 	render() {
 		const { cardStyle, vendorNameSectionStyle, vendorLogoContainerStyle } = styles;
+		const product = this.props.navigation.getParam('product');
 		return (
 			<Card 
 				transparent
@@ -19,10 +21,14 @@ class ProductVendor extends Component {
 					</View>
 					<View style={vendorNameSectionStyle}>
 						<Text note>Sold By</Text>
-						<Text style={{ fontSize: 14 }}>PT. Alam Absolut Boga Testing</Text>
+						<Text style={{ fontSize: 14 }}>{product.vendor}</Text>
 					</View>
 					<View style={{ justifyContent: 'center' }}>
-						<Button small bordered>
+						<Button 
+							small 
+							bordered 
+							onPress={() => this.props.navigation.navigate('VendorScreen', { product: product })}
+						>
 							<Text>View Vendor</Text>
 						</Button>
 					</View>
@@ -49,4 +55,4 @@ const styles = {
 	}
 };
 
-export default ProductVendor;
+export default withNavigation(ProductVendor);

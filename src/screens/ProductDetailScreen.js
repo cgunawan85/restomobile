@@ -141,7 +141,7 @@ class ProductDetailScreen extends Component {
 						<ProductImage product={product} />
 						<ProductTitle product={product} />
 						<Seperator />
-						<ProductVendor />
+						<ProductVendor product={product} />
 						<Seperator />
 						
 						<Segment style={{ paddingTop: 10 }}>

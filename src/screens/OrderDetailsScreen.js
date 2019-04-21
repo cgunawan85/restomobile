@@ -19,6 +19,7 @@ import {
 	ORDER_STATUS_4, 
 } from '../images';
 
+//need to clean up this screen
 class OrderDetailsScreen extends Component {
 	static navigationOptions = {
 		title: 'Order Details',
