@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text } from 'react-native';
 import { connect } from 'react-redux';
-import { Container, Content, Button } from 'native-base';
+import { Container, Content } from 'native-base';
 import { signOut } from '../actions';
 
 import { products } from '../data/productData';
@@ -17,10 +17,6 @@ class HomeScreen extends Component {
 		header: null,
 		title: 'RestoDepot'
 	};
-
-	onLogoutButtonPress() {
-		this.props.signOut();
-	}
 
 	render() {
 		const { titleStyle } = styles;
@@ -47,12 +43,6 @@ class HomeScreen extends Component {
 					<Seperator />
 					<Text style={titleStyle}>Products</Text>
 					<ProductList products={products} />
-					<Button
-						onPress={this.onLogoutButtonPress.bind(this)}
-						block
-					>
-						<Text style={{ color: 'white' }}>Logout</Text>
-					</Button>
 				</Content>
 			</Container>
 		);

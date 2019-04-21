@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { View, Dimensions } from 'react-native';
+import { View, Dimensions, Image } from 'react-native';
 import { 
 	Card, 
 	Container, 
 	Content,
-	Thumbnail,
 	H2,
 	Text,
 	Icon,
@@ -13,6 +12,7 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import { products } from '../data/productData';
 import ProductList from '../components/ProductList';
+import Seperator from '../components/common/Seperator';
 
 class VendorScreen extends Component {
 	static navigationOptions = {
@@ -38,15 +38,12 @@ class VendorScreen extends Component {
 
 		return (
 			<Container>
-				<Content padder style={{ flex: 1 }}>
-					<LinearGradient style={linearGradientStyle} colors={['red', 'blue']}>
-						<Thumbnail 
-							square 
-							large 
-							source={{ uri: product.vendor_logo }} 
-							style={vendorLogoStyle} 
-						/>
-					</LinearGradient>
+				<Content style={{ flex: 1 }}>
+					<LinearGradient style={linearGradientStyle} colors={['#2980b9', '#2c3e50']} />
+					<Image 
+						source={{ uri: product.vendor_logo }} 
+						style={vendorLogoStyle} 
+					/>
 					<Card transparent>
 						<View style={vendorNameTitleContainerStyle}>
 							<H2 style={vendorNameTitleTextStyle}>{product.vendor}</H2>
@@ -55,12 +52,14 @@ class VendorScreen extends Component {
 						<Button bordered style={messageVendorButtonStyle}>
 							<Text>Message Vendor</Text>
 						</Button>
+						<Seperator />
 						<Text style={descriptionTextStyle}>{product.vendor_description}</Text>
 					</Card>
+					<Seperator />
 					<Card transparent style={vendorInfoSectionStyle}>
 						<View style={vendorInfoSectionItemStyle}>
 							<Icon 
-								name='paper-plane' 
+								name='basket' 
 								type='SimpleLineIcons' 
 								style={{ fontSize: 18 }} 
 							/>
@@ -69,7 +68,7 @@ class VendorScreen extends Component {
 						</View>
 						<View style={vendorInfoSectionItemStyle}>
 							<Icon 
-								name='paper-plane' 
+								name='layers' 
 								type='SimpleLineIcons' 
 								style={{ fontSize: 18 }} 
 							/>
@@ -78,7 +77,7 @@ class VendorScreen extends Component {
 						</View>
 						<View style={vendorInfoSectionItemStyle}>
 							<Icon 
-								name='paper-plane' 
+								name='badge' 
 								type='SimpleLineIcons' 
 								style={{ fontSize: 18 }} 
 							/>
@@ -86,6 +85,7 @@ class VendorScreen extends Component {
 							<Text style={vendorInfoContentStyle}>85%</Text>
 						</View>
 					</Card>
+					<Seperator />
 					<H2 style={titleStyle}>Products</H2>
 					<ProductList products={products} />
 				</Content>
@@ -96,15 +96,17 @@ class VendorScreen extends Component {
 
 const styles = {
 	linearGradientStyle: {
-		height: Dimensions.get('window').height / 3
+		height: Dimensions.get('window').height / 3,
 	},
 	vendorLogoStyle: {
 		position: 'absolute',
+		marginTop: Dimensions.get('window').height / 4,
 		alignSelf: 'center',
-		top: '50%'
+		width: 140,	
+		height: 140
 	},
 	vendorNameTitleContainerStyle: {
-		paddingTop: '5%',
+		paddingTop: '20%',
 		paddingBottom: '5%'
 	},
 	vendorNameTitleTextStyle: {
@@ -116,12 +118,14 @@ const styles = {
 		textAlign: 'center'
 	},
 	messageVendorButtonStyle: {
-		alignSelf: 'center'
+		alignSelf: 'center',
+		marginBottom: 20
 	},
 	descriptionTextStyle: {
 		fontSize: 14, 
 		textAlign: 'center',
-		paddingTop: 15
+		paddingVertical: 15,
+		paddingHorizontal: 15
 	},
 	vendorInfoSectionStyle: {
 		flexDirection: 'row',

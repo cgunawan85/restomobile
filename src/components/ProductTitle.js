@@ -22,10 +22,19 @@ class ProductTitle extends Component {
 			>
 				<View style={containerStyle}>
 					<Text note>{brand}</Text>
-					<H1>{name}</H1>
+					<H1 style={{ fontWeight: '600' }}>{name}</H1>
 					<View style={priceContainerStyle}>
 						<Text style={priceTextStyle}>
 							{`IDR ${price.toLocaleString()}`}
+						</Text>
+						<Text 
+							note 
+							style={{ 
+								textAlign: 'right', 
+								fontSize: 12 
+							}}
+						>
+							Delivered in 1 business day
 						</Text>
 					</View>
 					<View style={ratingContainerStyle}>
