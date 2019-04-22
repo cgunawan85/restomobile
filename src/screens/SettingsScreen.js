@@ -20,12 +20,12 @@ class SettingsScreen extends Component {
 				<Content contentContainerStyle={{ flex: 1 }}>
 					<SettingsListItem iconName='question' destination='HomeScreen'>About Us</SettingsListItem>
 					<SettingsListItem iconName='user' destination='HomeScreen'>My Account</SettingsListItem>
-					<SettingsListItem iconName='paper-plane' destination='HomeScreen'>Shipping Addresses</SettingsListItem>
+					<SettingsListItem iconName='paper-plane' destination='ShippingAddressScreen'>Shipping Addresses</SettingsListItem>
 					<SettingsListItem iconName='support' destination='HomeScreen'>Help</SettingsListItem>
 					<View style={{ flex: 1, justifyContent: 'flex-end' }}>
 						<Button
 							onPress={this.onLogoutButtonPress.bind(this)}
-							block
+							full
 							style={{ bottom: 0 }}
 						>
 							<Text style={{ color: 'white' }}>Logout</Text>

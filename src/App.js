@@ -17,6 +17,9 @@ import AuthLoadingScreen from './screens/AuthLoadingScreen';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import SettingsScreen from './screens/SettingsScreen';
+import ShippingAddressScreen from './screens/ShippingAddressScreen';
+import EditShippingAddressScreen from './screens/EditShippingAddressScreen';
+import AddShippingAddressScreen from './screens/AddShippingAddressScreen';
 import CartScreen from './screens/CartScreen';
 import ProductDetailScreen from './screens/ProductDetailScreen';
 import OrderDetailsScreen from './screens/OrderDetailsScreen';
@@ -46,7 +49,12 @@ const HomeStack = createStackNavigator({ HomeScreen, ProductDetailScreen, Vendor
 
 const OrdersStack = createStackNavigator({ OrdersScreen, OrderDetailsScreen });
 
-const SettingsStack = createStackNavigator({ SettingsScreen });
+const SettingsStack = createStackNavigator({ 
+	SettingsScreen, 
+	ShippingAddressScreen,
+	EditShippingAddressScreen, 
+	AddShippingAddressScreen 
+});
 
 const CartStack = createStackNavigator({ CartScreen });
 

@@ -54,34 +54,44 @@ class OrderDetailsScreen extends Component {
 	renderOrderStatusImage() {
 		const order = this.props.navigation.getParam('order');
 		let imageName;
+		let orderStatus;
 		switch (order.delivery_status) {
 			case 1:
 				imageName = ORDER_STATUS_1;
+				orderStatus = 'Order Processing';
 				break;
 			case 2:
 				imageName = ORDER_STATUS_2;
+				orderStatus = 'Driver Found';
 				break;
 			case 3:
 				imageName = ORDER_STATUS_3;
+				orderStatus = 'Courier Out For Delivery';
 				break;
 			case 4:
 				imageName = ORDER_STATUS_4;
+				orderStatus = 'Order Completed';
 				break;
 			default:
 				return null;
 		}
 		return (
-			<View 
-				style={{ 
-					flexDirection: 'row', 
-					flex: 1 
-				}}
-			>
-				<Image 
-					source={imageName} 
-					style={{ flex: 1 }}
-					resizeMode='center'
-				/>
+			<View>
+				<View 
+					style={{ 
+						flexDirection: 'row', 
+						flex: 1 
+					}}
+				>
+					<Image 
+						source={imageName} 
+						style={{ flex: 1 }}
+						resizeMode='center'
+					/>
+				</View>
+				<H2 style={{ textAlign: 'center', fontWeight: '600', paddingBottom: 20 }}>
+					{orderStatus}
+				</H2>
 			</View>
 		);
 	}
@@ -167,7 +177,8 @@ const styles = {
 		width: 100
 	},
 	vendorTitleStyle: {
-		paddingVertical: 10
+		paddingVertical: 10,
+		fontWeight: '600'
 	},
 	orderDeliverySectionStyle: {
 		flexDirection: 'row', 

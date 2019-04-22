@@ -44,7 +44,6 @@ const styles = {
 		borderWidth: 1,
 	},
 	vendorLogoContainerStyle: {
-		paddingVertical: 10,
 		flexDirection: 'row', 
 		justifyContent: 'space-between'
 	},
