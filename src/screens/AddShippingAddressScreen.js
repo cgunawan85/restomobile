@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { Container, Content, Button, Text } from 'native-base';
+import { connect } from 'react-redux';
 import ShippingAddressForm from '../components/ShippingAddressForm';
+import HeaderBackButton from '../components/common/HeaderBackButton';
+import { resetState } from '../actions';
 
 
 class AddShippingAddressScreen extends Component {
-	static navigationOptions = {
+	static navigationOptions = ({ navigation }) => ({
 		title: 'Add Shipping Address',
-	};
+		headerLeft: <HeaderBackButton navigation={navigation} />
+	});
 
 	render() {
 		return (
@@ -22,4 +26,4 @@ class AddShippingAddressScreen extends Component {
 	}
 }
 
-export default AddShippingAddressScreen;
+export default connect(null, { resetState })(AddShippingAddressScreen);

@@ -1,22 +1,80 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, Image } from 'react-native';
 import { Form, Item, Label, Input, Button, Text } from 'native-base';
 import { connect } from 'react-redux';
-import { shippingAddressFormUpdate } from '../actions';
+import { shippingAddressFormUpdate, resetLocation, updateLongitudeAndLatitude } from '../actions';
+import { LOCATION_SUCCESS } from '../images/';
 
 class ShippingAddressForm extends Component {
+	onGetLocationButtonPress() {
+		navigator.geolocation.getCurrentPosition(
+			(position) => {
+				this.props.updateLongitudeAndLatitude({ 
+					longitude: position.coords.longitude, 
+					latitude: position.coords.latitude 
+				});
+			}, (error) => console.log(error),
+		{ enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
+		);
+	}
+
+	onResetLocationButtonPress() {
+		this.props.resetLocation();
+	}
+
+	renderGetLocationButtonOrSuccess() {
+		const { 
+			pinLocationContainerStyle, 
+			locationSuccessImageStyle, 
+			textStyle 
+		} = styles;
+
+		if (this.props.longitude && this.props.latitude) { 
+			return (
+				<View style={pinLocationContainerStyle}>
+					<Image 
+						style={locationSuccessImageStyle} 
+						source={LOCATION_SUCCESS} 
+					/>
+					<Text style={textStyle}>We got your location!</Text>
+					<Button 
+						bordered 
+						danger 
+						style={{ alignSelf: 'center', marginTop: 10 }}
+						onPress={() => this.onResetLocationButtonPress()}
+					>
+						<Text>Reset location</Text>
+					</Button>
+				</View>
+			);
+		}
+		return (
+			<View style={pinLocationContainerStyle}>
+				<Button bordered style={{ alignSelf: 'center' }}>
+					<Text>Pin Address</Text>
+				</Button>
+				<Text style={textStyle}>or</Text>
+				<Button 
+					bordered 
+					success 
+					style={{ alignSelf: 'center' }} 
+					onPress={() => this.onGetLocationButtonPress()}
+				>
+					<Text>
+						Use your current location
+					</Text>
+				</Button>
+				<Text note style={textStyle}>
+					This will help us easily find your delivery address
+				</Text>
+			</View>
+		);
+	}
+
 	render() {
-		console.log(this.props.province);
 		return (
 			<Form>
-				<View style={{ height: 200, justifyContent: 'center' }}>
-					<Button bordered style={{ alignSelf: 'center' }}>
-						<Text>Pin Address</Text>
-					</Button>
-					<Text note style={{ textAlign: 'center', paddingTop: 8 }}>
-						This will help us easily find your delivery address
-					</Text>
-				</View>
+				{this.renderGetLocationButtonOrSuccess()}
 				<Item stackedLabel>
 					<Label>Title</Label>
 					<Input
@@ -88,6 +146,22 @@ class ShippingAddressForm extends Component {
 	}
 }
 
+const styles = {
+	pinLocationContainerStyle: {
+		paddingVertical: 30, 
+		justifyContent: 'center' 
+	},
+	locationSuccessImageStyle: {
+		height: 100, 
+		width: 100, 
+		alignSelf: 'center'
+	},
+	textStyle: {
+		textAlign: 'center', 
+		paddingVertical: 10
+	}
+};
+
 const mapStateToProps = (state) => {
 	const { 
 		title, 
@@ -96,9 +170,25 @@ const mapStateToProps = (state) => {
 		city, 
 		postal_code, 
 		pic, 
-		pic_phone_number 
+		pic_phone_number,
+		error,
+		longitude,
+		latitude
 	} = state.shippingAddressForm;
-	return { title, address, province, city, postal_code, pic, pic_phone_number };
+	return { 
+		title, 
+		address, 
+		province, 
+		city, 
+		postal_code, 
+		pic, 
+		pic_phone_number, 
+		error, 
+		longitude, 
+		latitude 
+	};
 };
 
-export default connect(mapStateToProps, { shippingAddressFormUpdate })(ShippingAddressForm);
+export default connect(mapStateToProps, 
+	{ shippingAddressFormUpdate, resetLocation, updateLongitudeAndLatitude }
+	)(ShippingAddressForm);

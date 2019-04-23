@@ -13,3 +13,6 @@ export const REGISTER_USER_FAIL = 'register_user_fail';
 // shipping address actions
 
 export const SHIPPING_ADDRESS_FORM_UPDATE = 'shipping_address_form_update';
+export const RESET_LOCATION = 'reset_location';
+export const RESET_STATE = 'reset_state';
+export const UPDATE_LONGITUDE_LATITUDE = 'update_longitude_latitude';
