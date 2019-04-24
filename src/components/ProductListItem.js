@@ -76,11 +76,12 @@ const styles = {
 		color: 'gray'
 	},
 	productNameTextStyle: {
-		fontSize: 12
+		fontSize: 14
 	},
 	priceTextStyle: {
 		fontSize: 14,
-		color: 'red'
+		color: 'tomato',
+		paddingTop: 10
 	}
 };
 

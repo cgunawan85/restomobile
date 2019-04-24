@@ -8,7 +8,7 @@ import {
 } from 'native-base';
 import { withNavigation } from 'react-navigation';
 
-class HorizontalFlatListItem extends Component {
+class HorizontalProductFlatListItem extends Component {
 	render() {
 		const { photo, brand, name, price } = this.props.product;
 
@@ -80,8 +80,9 @@ const styles = {
 	},
 	priceTextStyle: {
 		fontSize: 14,
-		color: 'red'
+		color: 'tomato',
+		paddingTop: 10
 	}
 };
 
-export default withNavigation(HorizontalFlatListItem);
+export default withNavigation(HorizontalProductFlatListItem);

@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
-import { Container, Content } from 'native-base';
+import { Container, Content, Button } from 'native-base';
 import { signOut } from '../actions';
 
 import { products } from '../data/productData';
-import HorizontalFlatList from '../components/HorizontalFlatList';
+import { vendors } from '../data/vendorData';
+import HorizontalProductFlatList from '../components/HorizontalProductFlatList';
+import HorizontalVendorFlatList from '../components/HorizontalVendorFlatList';
 import BannerCarousel from '../components/BannerCarousel';
 import CategoryTable from '../components/CategoryTable';
 import SearchBar from '../components/SearchBar';
@@ -19,29 +21,73 @@ class HomeScreen extends Component {
 	};
 
 	render() {
-		const { titleStyle } = styles;
+		const { 
+			titleContainerStyle, 
+			titleTextStyle, 
+			buttonContainerStyle, 
+			buttonTextStyle 
+		} = styles;
+		
 		return (
 			<Container>
 				<SearchBar />
 				<Content>
 					<BannerCarousel />
 					<Seperator />
-					<Text style={titleStyle}>Categories</Text>
+					<Text style={titleTextStyle}>Categories</Text>
 					<CategoryTable />
 					<Seperator />
-					<Text style={titleStyle}>Best Sellers</Text>
-					<HorizontalFlatList 
+					<View style={titleContainerStyle}>
+						<Text style={titleTextStyle}>Best Sellers</Text>
+						<View style={buttonContainerStyle}>
+							<Button transparent>
+								<Text style={buttonTextStyle}>View All</Text>
+							</Button>
+						</View>
+					</View>
+					<HorizontalProductFlatList 
 						products={products} 
 						navigation={this.props.navigation} 
 					/>
 					<Seperator />
-					<Text style={titleStyle}>Recently Bought</Text>
-					<HorizontalFlatList products={products} />
+					<View style={titleContainerStyle}>
+						<Text style={titleTextStyle}>Recently Bought</Text>
+						<View style={buttonContainerStyle}>
+							<Button transparent>
+								<Text style={buttonTextStyle}>View All</Text>
+							</Button>
+						</View>
+					</View>
+					<HorizontalProductFlatList products={products} />
 					<Seperator />
-					<Text style={titleStyle}>Best Deals</Text>
-					<HorizontalFlatList products={products} />
+					<View style={titleContainerStyle}>
+						<Text style={titleTextStyle}>Best Deals</Text>
+						<View style={buttonContainerStyle}>
+							<Button transparent>
+								<Text style={buttonTextStyle}>View All</Text>
+							</Button>
+						</View>
+					</View>
+					<HorizontalProductFlatList products={products} />
 					<Seperator />
-					<Text style={titleStyle}>Products</Text>
+					<View style={titleContainerStyle}>
+						<Text style={titleTextStyle}>Vendors</Text>
+						<View style={buttonContainerStyle}>
+							<Button transparent>
+								<Text style={buttonTextStyle}>View All</Text>
+							</Button>
+						</View>
+					</View>
+					<HorizontalVendorFlatList vendors={vendors} />
+					<Seperator />
+					<View style={titleContainerStyle}>
+						<Text style={titleTextStyle}>Products</Text>
+						<View style={buttonContainerStyle}>
+							<Button transparent>
+								<Text style={buttonTextStyle}>View All</Text>
+							</Button>
+						</View>
+					</View>
 					<ProductList products={products} />
 				</Content>
 			</Container>
@@ -50,12 +96,25 @@ class HomeScreen extends Component {
 }
 
 const styles = {
-	titleStyle: {
+	titleContainerStyle: {
+		flexDirection: 'row', 
+		justifyContent: 'space-between'
+	},
+	titleTextStyle: {
 		paddingTop: 20,
 		paddingBottom: 15,
 		paddingLeft: 7,
 		fontSize: 24,
-		fontWeight: 'bold'
+		fontWeight: 'bold',
+		color: '#444444'
+	},
+	buttonContainerStyle: {
+		justifyContent: 'center', 
+		paddingRight: 20, 
+		paddingTop: 8
+	},
+	buttonTextStyle: {
+		color: 'tomato'
 	}
 };
 

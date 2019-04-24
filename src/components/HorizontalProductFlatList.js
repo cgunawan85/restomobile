@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { View, FlatList } from 'react-native';
-import HorizontalFlatListItem from './HorizontalFlatListItem';
+import HorizontalProductFlatListItem from './HorizontalProductFlatListItem';
 
-class HorizontalFlatList extends Component {
+class HorizontalProductFlatList extends Component {
 	renderCardItem(product) {
-		return <HorizontalFlatListItem product={product.item} />;
+		return <HorizontalProductFlatListItem product={product.item} />;
 	}
 
 	render() {
@@ -22,4 +22,4 @@ class HorizontalFlatList extends Component {
 	}
 }
 
-export default HorizontalFlatList;
+export default HorizontalProductFlatList;

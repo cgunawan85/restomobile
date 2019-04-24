@@ -24,6 +24,7 @@ class OrderListItem extends Component {
 					>
 							{`${items[0].name} and ${items.length - 1} more items`}
 					</Text>
+					{/* or 'Not Paid' using status_payment */}
 					<Text note>Paid on Apr 14, 2019</Text>
 					{/* Use delivery status */}
 					<Text note numberOfLines={1}>Order Processing</Text>

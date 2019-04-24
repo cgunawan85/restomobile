@@ -9,7 +9,7 @@ import { resetState } from '../actions';
 class AddShippingAddressScreen extends Component {
 	static navigationOptions = ({ navigation }) => ({
 		title: 'Add Shipping Address',
-		headerLeft: <HeaderBackButton navigation={navigation} />
+		headerLeft: <HeaderBackButton title='some label' navigation={navigation} />
 	});
 
 	render() {

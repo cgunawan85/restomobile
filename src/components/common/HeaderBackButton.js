@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button, Icon } from 'native-base';
+import { Icon, Button } from 'native-base';
 import { resetState } from '../../actions';
 
 class HeaderBackButton extends Component {
 	render() {
 		return (
 			<Button
-				transparent 
+				transparent
 				onPress={() => {
 					this.props.resetState(); 
 					this.props.navigation.goBack();

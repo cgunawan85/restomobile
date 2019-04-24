@@ -13,7 +13,7 @@ class ProductTitle extends Component {
 			starIconStyle, 
 			reviewsTextStyle 
 		} = styles;
-		const { brand, name, price } = this.props.product;
+		const { brand, name, price, rating, review_count } = this.props.product;
 		
 		return (
 			<Card 
@@ -39,8 +39,8 @@ class ProductTitle extends Component {
 					</View>
 					<View style={ratingContainerStyle}>
 						<Icon name='star' style={starIconStyle} />
-						<Text style={{ color: '#FFD700' }}> 4.5</Text>
-						<Text style={reviewsTextStyle}>  302 Reviews</Text>
+						<Text style={{ color: '#FFD700' }}> {rating}</Text>
+						<Text style={reviewsTextStyle}>  {`${review_count} Reviews`}</Text>
 					</View>
 				</View>
 			</Card>
@@ -64,7 +64,7 @@ const styles = {
 		paddingTop: 10
 	},
 	priceTextStyle: {
-		color: 'red', 
+		color: 'tomato', 
 		fontSize: 20, 
 		fontWeight: '600', 
 		textAlign: 'right'
@@ -78,9 +78,10 @@ const styles = {
 		color: '#FFD700'
 	},
 	reviewsTextStyle: {
-		fontSize: 16, 
+		fontSize: 14, 
 		color: '#333333', 
-		fontStyle: 'italic'
+		fontStyle: 'italic',
+		lineHeight: 20
 	}
 };
 

@@ -20,7 +20,7 @@ class VendorScreen extends Component {
 	};
 
 	render() {
-		const product = this.props.navigation.getParam('product');
+		const vendor = this.props.navigation.getParam('vendor');
 		const { 
 			linearGradientStyle, 
 			vendorLogoStyle, 
@@ -41,19 +41,19 @@ class VendorScreen extends Component {
 				<Content style={{ flex: 1 }}>
 					<LinearGradient style={linearGradientStyle} colors={['#2980b9', '#2c3e50']} />
 					<Image 
-						source={{ uri: product.vendor_logo }} 
+						source={{ uri: vendor.logo }} 
 						style={vendorLogoStyle} 
 					/>
 					<Card transparent>
 						<View style={vendorNameTitleContainerStyle}>
-							<H2 style={vendorNameTitleTextStyle}>{product.vendor}</H2>
-							<Text style={joinDateTextStyle}>Joined on January 2001</Text>
+							<H2 style={vendorNameTitleTextStyle}>{vendor.name}</H2>
+							<Text style={joinDateTextStyle}>{`Joined on ${vendor.join_date}`}</Text>
 						</View>
 						<Button bordered style={messageVendorButtonStyle}>
 							<Text>Message Vendor</Text>
 						</Button>
 						<Seperator />
-						<Text style={descriptionTextStyle}>{product.vendor_description}</Text>
+						<Text style={descriptionTextStyle}>{vendor.description}</Text>
 					</Card>
 					<Seperator />
 					<Card transparent style={vendorInfoSectionStyle}>
@@ -64,7 +64,7 @@ class VendorScreen extends Component {
 								style={{ fontSize: 18 }} 
 							/>
 							<Text style={vendorInfoTitleStyle}>Products</Text>
-							<Text style={vendorInfoContentStyle}>200</Text>
+							<Text style={vendorInfoContentStyle}>{vendor.products}</Text>
 						</View>
 						<View style={vendorInfoSectionItemStyle}>
 							<Icon 
@@ -73,7 +73,7 @@ class VendorScreen extends Component {
 								style={{ fontSize: 18 }} 
 							/>
 							<Text style={vendorInfoTitleStyle}>Transactions</Text>
-							<Text style={vendorInfoContentStyle}>1001</Text>
+							<Text style={vendorInfoContentStyle}>{vendor.transactions}</Text>
 						</View>
 						<View style={vendorInfoSectionItemStyle}>
 							<Icon 
@@ -82,7 +82,7 @@ class VendorScreen extends Component {
 								style={{ fontSize: 18 }} 
 							/>
 							<Text style={vendorInfoTitleStyle}>Rating</Text>
-							<Text style={vendorInfoContentStyle}>85%</Text>
+							<Text style={vendorInfoContentStyle}>{vendor.rating}</Text>
 						</View>
 					</Card>
 					<Seperator />

@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import { Text, Card, Thumbnail, Button } from 'native-base';
 import { withNavigation } from 'react-navigation';
+import { vendors } from '../data/vendorData';
 
 class ProductVendor extends Component {
 	render() {
 		const { cardStyle, vendorNameSectionStyle, vendorLogoContainerStyle } = styles;
 		const product = this.props.navigation.getParam('product');
+		const vendor = vendors[0];
+		
 		return (
 			<Card 
 				transparent
@@ -27,7 +30,7 @@ class ProductVendor extends Component {
 						<Button 
 							small 
 							bordered 
-							onPress={() => this.props.navigation.navigate('VendorScreen', { product: product })}
+							onPress={() => this.props.navigation.navigate('VendorScreen', { vendor: vendor })}
 						>
 							<Text>View Vendor</Text>
 						</Button>

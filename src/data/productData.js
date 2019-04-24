@@ -1,3 +1,5 @@
+import { vendors } from './vendorData';
+
 export const products = [
 	{
 		id: 0,
@@ -12,8 +14,14 @@ export const products = [
 		weight: 25,
 		height: 35,
 		width: 35,
-		photo: 'https://firebasestorage.googleapis.com/v0/b/coldmoo-f07a2.appspot.com/o/photo1.JPG?alt=media&token=7d9ae1f8-f2b0-4133-b61c-2fd536cdac20'
-
+		photo: 'https://firebasestorage.googleapis.com/v0/b/coldmoo-f07a2.appspot.com/o/photo1.JPG?alt=media&token=7d9ae1f8-f2b0-4133-b61c-2fd536cdac20',
+		review_count: 302,
+		reviews: [
+				{ body: 'This product is awesome!', author: 'Chris Gunawan', date: 'April 6, 2019' }, 
+				{ body: 'This product is the best!', author: 'Superman', date: 'January 2, 2020' }, 
+				{ body: 'This product is superb!', author: 'Wonderwoman', date: 'January 12, 2019' } 
+			],
+		rating: 4.5,
 	},
 	{
 		id: 1,
@@ -28,7 +36,14 @@ export const products = [
 		weight: 25,
 		height: 35,
 		width: 35,
-		photo: 'https://firebasestorage.googleapis.com/v0/b/coldmoo-f07a2.appspot.com/o/photo1.JPG?alt=media&token=7d9ae1f8-f2b0-4133-b61c-2fd536cdac20'
+		photo: 'https://firebasestorage.googleapis.com/v0/b/coldmoo-f07a2.appspot.com/o/photo1.JPG?alt=media&token=7d9ae1f8-f2b0-4133-b61c-2fd536cdac20',
+		review_count: 302,
+		reviews: [
+				{ body: 'This product is awesome!', author: 'Chris Gunawan', date: 'April 6, 2019' }, 
+				{ body: 'This product is the best!', author: 'Superman', date: 'January 2, 2020' }, 
+				{ body: 'This product is superb!', author: 'Wonderwoman', date: 'January 12, 2019' } 
+			],
+		rating: 4.5,
 	},
 	{
 		id: 2,
@@ -43,7 +58,14 @@ export const products = [
 		weight: 10,
 		height: 50,
 		width: 30,
-		photo: 'https://firebasestorage.googleapis.com/v0/b/coldmoo-f07a2.appspot.com/o/photo1.JPG?alt=media&token=7d9ae1f8-f2b0-4133-b61c-2fd536cdac20'
+		photo: 'https://firebasestorage.googleapis.com/v0/b/coldmoo-f07a2.appspot.com/o/photo1.JPG?alt=media&token=7d9ae1f8-f2b0-4133-b61c-2fd536cdac20',
+		review_count: 302,
+		reviews: [
+				{ body: 'This product is awesome!', author: 'Chris Gunawan', date: 'April 6, 2019' }, 
+				{ body: 'This product is the best!', author: 'Superman', date: 'January 2, 2020' }, 
+				{ body: 'This product is superb!', author: 'Wonderwoman', date: 'January 12, 2019' } 
+			],
+		rating: 4.5,
 	},
 	{
 		id: 3,
@@ -58,7 +80,14 @@ export const products = [
 		weight: 10,
 		height: 50,
 		width: 30,
-		photo: 'https://firebasestorage.googleapis.com/v0/b/coldmoo-f07a2.appspot.com/o/photo1.JPG?alt=media&token=7d9ae1f8-f2b0-4133-b61c-2fd536cdac20'
+		photo: 'https://firebasestorage.googleapis.com/v0/b/coldmoo-f07a2.appspot.com/o/photo1.JPG?alt=media&token=7d9ae1f8-f2b0-4133-b61c-2fd536cdac20',
+		review_count: 302,
+		reviews: [
+				{ body: 'This product is awesome!', author: 'Chris Gunawan', date: 'April 6, 2019' }, 
+				{ body: 'This product is the best!', author: 'Superman', date: 'January 2, 2020' }, 
+				{ body: 'This product is superb!', author: 'Wonderwoman', date: 'January 12, 2019' } 
+			],
+		rating: 4.5,
 	},
 	{
 		id: 4,
@@ -73,7 +102,14 @@ export const products = [
 		weight: 10,
 		height: 50,
 		width: 30,
-		photo: 'https://firebasestorage.googleapis.com/v0/b/coldmoo-f07a2.appspot.com/o/photo1.JPG?alt=media&token=7d9ae1f8-f2b0-4133-b61c-2fd536cdac20'
+		photo: 'https://firebasestorage.googleapis.com/v0/b/coldmoo-f07a2.appspot.com/o/photo1.JPG?alt=media&token=7d9ae1f8-f2b0-4133-b61c-2fd536cdac20',
+		review_count: 302,
+		reviews: [
+				{ body: 'This product is awesome!', author: 'Chris Gunawan', date: 'April 6, 2019' }, 
+				{ body: 'This product is the best!', author: 'Superman', date: 'January 2, 2020' }, 
+				{ body: 'This product is superb!', author: 'Wonderwoman', date: 'January 12, 2019' } 
+			],
+		rating: 4.5,
 	},
 	{
 		id: 5,
@@ -88,6 +124,13 @@ export const products = [
 		weight: 10,
 		height: 50,
 		width: 30,
-		photo: 'https://firebasestorage.googleapis.com/v0/b/coldmoo-f07a2.appspot.com/o/photo1.JPG?alt=media&token=7d9ae1f8-f2b0-4133-b61c-2fd536cdac20'
+		photo: 'https://firebasestorage.googleapis.com/v0/b/coldmoo-f07a2.appspot.com/o/photo1.JPG?alt=media&token=7d9ae1f8-f2b0-4133-b61c-2fd536cdac20',
+		review_count: 302,
+		reviews: [
+				{ body: 'This product is awesome!', author: 'Chris Gunawan', date: 'April 6, 2019' }, 
+				{ body: 'This product is the best!', author: 'Superman', date: 'January 2, 2020' }, 
+				{ body: 'This product is superb!', author: 'Wonderwoman', date: 'January 12, 2019' } 
+			],
+		rating: 4.5,
 	},
 ];
