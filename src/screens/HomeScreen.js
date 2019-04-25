@@ -104,7 +104,7 @@ const styles = {
 		paddingTop: 20,
 		paddingBottom: 15,
 		paddingLeft: 7,
-		fontSize: 24,
+		fontSize: 18,
 		fontWeight: 'bold',
 		color: '#444444'
 	},

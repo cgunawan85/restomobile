@@ -8,7 +8,7 @@ import {
 	createSwitchNavigator,
 	createAppContainer
 } from 'react-navigation';
-import { Root, Icon } from 'native-base';
+import { Root, Icon, StyleProvider, getTheme } from 'native-base';
 import reducers from './reducers';
 
 import HomeScreen from './screens/HomeScreen';
@@ -74,20 +74,21 @@ const MainTabNavigator = createBottomTabNavigator({
 			const { routeName } = navigation.state;
 			let iconName;
 			if (routeName === 'Home') {
-				iconName = `ios-star${focused ? '' : '-outline'}`;
+				iconName = `home${focused ? '' : '-outline'}`;
 			} else if (routeName === 'Orders') {
-				iconName = `ios-star${focused ? '' : '-outline'}`;
+				iconName = `file${focused ? '' : '-outline'}`;
 			} else if (routeName === 'Settings') {
-				iconName = `ios-star${focused ? '' : '-outline'}`;
+				iconName = `settings${focused ? '' : '-outline'}`;
 			} else if (routeName === 'Cart') {
-				iconName = `ios-star${focused ? '' : '-outline'}`;
+				iconName = `cart${focused ? '' : '-outline'}`;
 			}
 			return (
-				<Icon 
-					name={iconName} 
-					type='Ionicons' 
-					style={{ paddingTop: 5, color: '#85BEEB', fontSize: 24 }} 
-				/>
+				<StyleProvider style={getTheme({ iconFamily: 'MaterialCommunityIcons' })}>
+					<Icon 
+						name={iconName}
+						style={{ fontSize: 20 }}
+					/>
+				</StyleProvider>
 			);
 		},
 	})
