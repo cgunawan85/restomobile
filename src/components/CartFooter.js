@@ -19,7 +19,7 @@ class CartFooter extends Component {
 					<Text style={priceTextStyle}>IDR 500,000</Text>
 				</View>
 				<View style={buttonContainerStyle}>
-					<Button full onPress={() => console.log('test')}>
+					<Button full onPress={() => this.props.showModal()}>
 						<Text>Buy Now (1)</Text>
 					</Button>
 				</View>

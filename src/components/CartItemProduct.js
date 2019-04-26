@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { Text, CardItem, Thumbnail } from 'native-base';
+import NumericInput from 'react-native-numeric-input';
 
 class CartItemProduct extends Component {
 	render() {
 		const { textStyle, priceTextStyle, itemTextContainerStyle } = styles;
 		return (
-			<CardItem style={{ justifyContent: 'space-around' }}>
+			<CardItem bordered style={{ justifyContent: 'space-around' }}>
 				<View style={{ justifyContent: 'flex-start' }}>
 					<Thumbnail 
 						square 

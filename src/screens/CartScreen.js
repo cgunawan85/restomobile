@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import { Container, Content, Card, CardItem, Left, Button, Text } from 'native-base';
 import CartItem from '../components/CartItem';
 import CartFooter from '../components/CartFooter';
+import ConfirmPaymentModal from '../components/ConfirmPaymentModal';
 
 class CartScreen extends Component {
 	static navigationOptions = {
@@ -23,21 +24,28 @@ class CartScreen extends Component {
 
 	constructor(props) {
 		super(props);
-		this.state = { checked: false };
+		this.state = { checked: false, modalVisible: false };
 	}
 
 	onSelectAllButtonPress() {
-		if (this.state.checked === false) {
-			this.setState({ checked: true });
-		}
+		this.setState({ checked: !this.state.checked });
 	}
 
 	toggleChecked() {
 		this.setState({ checked: !this.state.checked });
 	}
 
+	showModal() {
+		this.setState({ modalVisible: true });
+	}
+
+	closeModal() {
+		this.setState({ modalVisible: false });
+	}
+
+
 	render() {
-		const { contentStyle, footerContainerStyle } = styles;
+		const { contentStyle } = styles;
 		return (
 			<Container>
 				<Content padder style={contentStyle}>
@@ -57,9 +65,15 @@ class CartScreen extends Component {
 						checked={this.state.checked} 
 						toggleChecked={this.toggleChecked.bind(this)} 
 					/>
+					<ConfirmPaymentModal 
+						modalVisible={this.state.modalVisible} 
+						onDecline={this.closeModal.bind(this)}
+					/>
 				</Content>
-				<View style={footerContainerStyle}>
-					<CartFooter />
+				<View>
+					<CartFooter 
+						showModal={this.showModal.bind(this)} 
+					/>
 				</View>
 			</Container>
 		);
@@ -68,11 +82,8 @@ class CartScreen extends Component {
 
 const styles = {
 	contentStyle: {
-		flex: 1
+		flex: 1,
 	},
-	footerContainerStyle: {
-		flex: 1
-	}
 };
 
 export default CartScreen;

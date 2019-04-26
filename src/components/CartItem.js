@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
-import { Text, Card, CardItem, Left, CheckBox } from 'native-base';
+import { 
+	Text, 
+	Card, 
+	CardItem, 
+	Left, 
+	CheckBox, 
+} from 'native-base';
 import CartItemProduct from './CartItemProduct';
+import ShippingAddressPicker from './ShippingAddressPicker';
+import ShippingMethodPicker from './ShippingMethodPicker';
 
 
 class CartItem extends Component {
@@ -21,6 +29,8 @@ class CartItem extends Component {
 				{/* FlatList should go here to render CartItemProduct */}
 				<CartItemProduct />
 				<CartItemProduct />
+				<ShippingAddressPicker />
+				<ShippingMethodPicker />
 			</Card>
 		);
 	}
