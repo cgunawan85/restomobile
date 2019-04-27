@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { Thumbnail, Card } from 'native-base';
+import { LOADING_IMAGE } from '../images/';
 
 class OrderDetailsListItem extends Component {
 	render() {
@@ -14,7 +15,12 @@ class OrderDetailsListItem extends Component {
 		return (
 			<Card transparent style={cardStyle}>
 				<View style={{ justifyContent: 'flex-start' }}>
-					<Thumbnail small square source={{ uri: item.photo }} />
+					<Thumbnail 
+						small 
+						square 
+						source={{ uri: item.photo }} 
+						defaultSource={LOADING_IMAGE}
+					/>
 				</View>
 
 				<View style={itemNameTextContainerStyle}>

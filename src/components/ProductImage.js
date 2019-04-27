@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Image, Dimensions } from 'react-native';
+import { Dimensions, Image } from 'react-native';
 import { Card } from 'native-base';
+import { LOADING_IMAGE } from '../images/';
 
 class ProductImage extends Component {
 	render() {
@@ -11,7 +12,8 @@ class ProductImage extends Component {
 				<Image 
 					style={imageStyle} 
 					source={{ uri: photo }} 
-					resizeMode='contain'
+					resizeMode='cover'
+					defaultSource={LOADING_IMAGE}
 				/>
 			</Card>
 		);
@@ -27,8 +29,8 @@ const styles = {
 		borderWidth: 1
 	},
 	imageStyle: {
-		flex: 1
-	},
+		flex: 1,
+	}
 };
 
 export default ProductImage;

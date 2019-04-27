@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ListItem, Left, Thumbnail, Body, Text, Right, Button } from 'native-base';
 import { withNavigation } from 'react-navigation';
+import { LOADING_IMAGE } from '../images/';
 
 class OrderListItem extends Component {
 	render() {
@@ -12,7 +13,8 @@ class OrderListItem extends Component {
 				<Left>
 					<Thumbnail 
 						square
-						large 
+						large
+						defaultSource={LOADING_IMAGE} 
 						source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/coldmoo-f07a2.appspot.com/o/photo1.JPG?alt=media&token=7d9ae1f8-f2b0-4133-b61c-2fd536cdac20' }} 
 					/>
 				</Left>

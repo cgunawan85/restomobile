@@ -13,6 +13,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { products } from '../data/productData';
 import ProductList from '../components/ProductList';
 import Seperator from '../components/common/Seperator';
+import { LOADING_IMAGE } from '../images/';
 
 class VendorScreen extends Component {
 	static navigationOptions = {
@@ -42,7 +43,8 @@ class VendorScreen extends Component {
 					<LinearGradient style={linearGradientStyle} colors={['#2980b9', '#2c3e50']} />
 					<Image 
 						source={{ uri: vendor.logo }} 
-						style={vendorLogoStyle} 
+						style={vendorLogoStyle}
+						defaultSource={LOADING_IMAGE} 
 					/>
 					<Card transparent>
 						<View style={vendorNameTitleContainerStyle}>

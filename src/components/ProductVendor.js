@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import { Text, Card, Thumbnail, Button } from 'native-base';
 import { withNavigation } from 'react-navigation';
 import { vendors } from '../data/vendorData';
+import { LOADING_IMAGE } from '../images/';
 
 class ProductVendor extends Component {
 	render() {
@@ -19,6 +20,7 @@ class ProductVendor extends Component {
 					<View>
 						<Thumbnail 
 							square
+							defaultSource={LOADING_IMAGE}
 							source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/coldmoo-f07a2.appspot.com/o/photo1.JPG?alt=media&token=7d9ae1f8-f2b0-4133-b61c-2fd536cdac20' }} 
 						/>
 					</View>

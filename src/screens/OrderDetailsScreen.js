@@ -16,7 +16,8 @@ import {
 	ORDER_STATUS_1, 
 	ORDER_STATUS_2, 
 	ORDER_STATUS_3, 
-	ORDER_STATUS_4, 
+	ORDER_STATUS_4,
+	LOADING_IMAGE, 
 } from '../images';
 
 //need to clean up this screen
@@ -113,7 +114,11 @@ class OrderDetailsScreen extends Component {
 				<Content>
 					<Card transparent style={orderTitleSectionStyle}>
 						<View style={vendorLogoContainerStyle}>
-							<Image style={vendorLogoImageStyle} source={{ uri: order.vendor_logo }} />
+							<Image 
+								style={vendorLogoImageStyle} 
+								source={{ uri: order.vendor_logo }}
+								defaultSource={LOADING_IMAGE} 
+							/>
 						</View>
 						<H2 style={vendorTitleStyle}>{order.vendor}</H2>
 						<Text>{`Order #${order.order_id}`}</Text>

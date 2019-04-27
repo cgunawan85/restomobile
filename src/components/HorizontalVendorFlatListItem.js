@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import { Card, Thumbnail, Text, Button } from 'native-base';
 import { withNavigation } from 'react-navigation';
+import { LOADING_IMAGE } from '../images/';
 
 class HorizontalVendorFlatListItem extends Component {
 	onMoreInfoButtonPress() {
@@ -24,7 +25,12 @@ class HorizontalVendorFlatListItem extends Component {
 			<Card button style={cardStyle}>
 				<View style={contentContainerStyle}>
 					<View style={logoContainerStyle}>
-						<Thumbnail large square source={{ uri: logo }} />
+						<Thumbnail 
+							large 
+							square 
+							source={{ uri: logo }} 
+							defaultSource={LOADING_IMAGE}
+						/>
 					</View>
 					<View style={textContainerStyle}>
 						<Text numberOfLines={1} style={vendorNameTextStyle}>{name}</Text>

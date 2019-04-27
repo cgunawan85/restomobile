@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import { Text, CardItem, Thumbnail } from 'native-base';
 import NumericInput from 'react-native-numeric-input';
+import { LOADING_IMAGE } from '../images/';
 
 class CartItemProduct extends Component {
 	render() {
@@ -11,7 +12,8 @@ class CartItemProduct extends Component {
 				<View style={{ justifyContent: 'flex-start' }}>
 					<Thumbnail 
 						square 
-						small 
+						small
+						defaultSource={LOADING_IMAGE} 
 						source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/coldmoo-f07a2.appspot.com/o/photo1.JPG?alt=media&token=7d9ae1f8-f2b0-4133-b61c-2fd536cdac20' }} 
 					/>
 				</View>

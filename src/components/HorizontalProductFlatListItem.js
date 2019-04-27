@@ -7,6 +7,7 @@ import {
 	Body
 } from 'native-base';
 import { withNavigation } from 'react-navigation';
+import { LOADING_IMAGE } from '../images/';
 
 class HorizontalProductFlatListItem extends Component {
 	render() {
@@ -29,7 +30,8 @@ class HorizontalProductFlatListItem extends Component {
 					<CardItem cardBody>
 						<Image 
 							source={{ uri: photo }} 
-							style={imageStyle} 
+							style={imageStyle}
+							defaultSource={LOADING_IMAGE} 
 						/>
 					</CardItem>
 					<CardItem>
