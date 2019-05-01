@@ -43,6 +43,7 @@ export const updateAddressQuery = (text) => {
 	};
 };
 
+/* delete this?
 export const lookupCoordinates = (address) => {
 	const GEOCODE_API_KEY = 'AIzaSyAcwn0XXXM1hoSGSDQiF7h9eHMkIo2gDVc';
 	const parsed_address = address.split(' ').join('+');
@@ -61,4 +62,5 @@ export const lookupCoordinates = (address) => {
 		});
 	};
 };
+*/
 

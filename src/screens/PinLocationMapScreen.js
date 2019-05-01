@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image, TouchableOpacity, Text } from 'react-native';
+import { View, Image, TouchableOpacity, Text, ActivityIndicator } from 'react-native';
 import { Container, Content, Form, Input, Item, Button, Icon, Spinner } from 'native-base';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import { connect } from 'react-redux';
@@ -13,6 +13,7 @@ fetch('https://maps.googleapis.com/maps/api/geocode/json?address=' + myLat + ','
             console.log('ADDRESS GEOCODE is BACK!! => ' + JSON.stringify(responseJson));
 })
 */
+const axios = require('axios');
 
 class PinLocationMapScreen extends Component {
 	static navigationOptions = {
@@ -30,7 +31,8 @@ class PinLocationMapScreen extends Component {
 				longitude: 106.84513,
 				latitudeDelta: 0.0421,
 				longitudeDelta: 0.0421, 
-			}
+			},
+			loading: false
 		};
 	}
 
@@ -42,20 +44,54 @@ class PinLocationMapScreen extends Component {
 		this.props.navigation.goBack();
 	}
 
+	/*
 	onSearchButtonPress() {
 		this.props.lookupCoordinates(this.props.address_query);
 	}
+	*/
+
+	renderNewRegionWithAddress(address) {
+		const GEOCODE_API_KEY = 'AIzaSyAcwn0XXXM1hoSGSDQiF7h9eHMkIo2gDVc';
+		const parsed_address = address.split(' ').join('+');
+		let response;
+
+		this.setState({ loading: true });
+
+		axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${parsed_address}&key=${GEOCODE_API_KEY}`)
+			.then(res => {
+				console.log(res);
+				response = res;
+			})
+			.catch((error) => console.log(error))
+			.then(() => this.setState({ 
+				region: { 
+					latitude: response.data.results[1].geometry.location.latitude,
+					longitude: response.data.results[1].geometry.location.longitude,
+					latitudeDelta: 0.0121,
+					longitudeDelta: 0.0121, 	
+				},
+				loading: false 
+			}))
+			.catch((error) => {
+				console.log(error);
+				this.setState({ loading: false });
+			});
+	}
 
 	renderSpinnerOrSearchButton() {
-		if (this.props.loading) {
+		if (this.state.loading) {
 			return (
-				<Spinner style={{ paddingRight: 15, height: 5 }} />
+				<ActivityIndicator 
+					style={{ 
+						paddingRight: 15 
+					}} 
+				/>
 			);
 		}
 		return (
 			<Button 
 				transparent
-				onPress={() => this.onSearchButtonPress()}
+				onPress={() => this.renderNewRegionWithAddress(this.props.address_query)}
 			>
 				<Icon name='search' style={{ color: '#2077be' }} />
 			</Button>
