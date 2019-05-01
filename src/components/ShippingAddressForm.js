@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { View, Image } from 'react-native';
 import { Form, Item, Label, Input, Button, Text } from 'native-base';
 import { connect } from 'react-redux';
+import { withNavigation } from 'react-navigation';
 import { shippingAddressFormUpdate, resetLocation, updateLongitudeAndLatitude } from '../actions';
 import { LOCATION_SUCCESS } from '../images/';
-import { withNavigation } from 'react-navigation';
+
 
 class ShippingAddressForm extends Component {
 	onGetLocationButtonPress() {
@@ -70,7 +71,7 @@ class ShippingAddressForm extends Component {
 					</Text>
 				</Button>
 				<Text note style={textStyle}>
-					This will help us easily find your delivery address
+					This will help our delivery partners find your delivery location
 				</Text>
 			</View>
 		);
