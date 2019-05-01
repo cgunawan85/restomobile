@@ -8,6 +8,9 @@ import ConfirmPaymentModal from '../components/ConfirmPaymentModal';
 class CartScreen extends Component {
 	static navigationOptions = {
 		title: 'Cart',
+		headerTitleStyle: {
+			color: '#2077be',
+		},
 	};
 
 	/*

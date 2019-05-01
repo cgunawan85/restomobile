@@ -8,6 +8,9 @@ import { emailChanged, passwordChanged, loginUser } from '../actions';
 class LoginScreen extends Component {
 	static navigationOptions = {
 		title: 'Login',
+		headerTitleStyle: {
+			color: '#2077be',
+		},
 	};
 
 	onEmailChanged(text) {
@@ -70,7 +73,7 @@ const styles = {
 	textStyle: {
 		alignSelf: 'center',
 		paddingTop: 20,
-		paddingBottom: 20	
+		paddingBottom: 20
 	},
 	registerTextStyle: {
 		textAlign: 'center',

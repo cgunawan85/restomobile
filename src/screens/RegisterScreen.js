@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { Text } from 'react-native';
 import { connect } from 'react-redux';
 import { Container, Content, Button, Spinner } from 'native-base';
-import CredentialForm from '../components/CredentialForm';
+import RegisterForm from '../components/RegisterForm';
 import { 
+	firstNameChanged,
+	lastNameChanged,
 	emailChanged, 
 	passwordChanged, 
 	registerUser 
@@ -12,7 +14,18 @@ import {
 class RegisterScreen extends Component {
 	static navigationOptions = {
 		title: 'Register',
+		headerTitleStyle: {
+			color: '#2077be',
+		},
 	};
+
+	onFirstNameChanged(text) {
+		this.props.firstNameChanged(text);
+	}
+	
+	onLastNameChanged(text) {
+		this.props.lastNameChanged(text);
+	}
 
 	onEmailChanged(text) {
 		this.props.emailChanged(text);
@@ -22,6 +35,7 @@ class RegisterScreen extends Component {
 		this.props.passwordChanged(text);
 	}
 
+	//add first name last name
 	onRegisterButtonPress() {
 		this.props.registerUser({ 
 			email: this.props.email, 
@@ -44,11 +58,13 @@ class RegisterScreen extends Component {
 	}
 
 	render() {
-		const { buttonTextStyle } = styles;
+		console.log(this.props.lastName);
 		return (
 			<Container>
 				<Content>
-						<CredentialForm
+						<RegisterForm
+							onFirstNameChanged={this.onFirstNameChanged.bind(this)}
+							onLastNameChanged={this.onLastNameChanged.bind(this)}
 							onEmailChanged={this.onEmailChanged.bind(this)}
 							onPasswordChanged={this.onPasswordChanged.bind(this)}
 						/>
@@ -59,14 +75,10 @@ class RegisterScreen extends Component {
 	}
 }
 
-const styles = {
-	buttonTextStyle: {
-		color: 'white'
-	},
-};
-
 const mapStateToProps = state => {
 	return {
+		firstName: state.auth.firstName,
+		lastName: state.auth.lastName,
 		email: state.auth.email,
 		password: state.auth.password,
 		loading: state.auth.loading,
@@ -76,6 +88,8 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps, { 
+	firstNameChanged,
+	lastNameChanged,
 	emailChanged, 
 	passwordChanged, 
 	registerUser 

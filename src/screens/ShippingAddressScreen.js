@@ -14,6 +14,9 @@ class ShippingAddressScreen extends Component {
 				<Icon name='add' type='Ionicons' />
 			</Button>
 		),
+		headerTitleStyle: {
+			color: '#2077be',
+		},
 	});
 
 	render() {

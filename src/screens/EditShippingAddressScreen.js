@@ -6,6 +6,9 @@ import ShippingAddressForm from '../components/ShippingAddressForm';
 class EditShippingAddressScreen extends Component {
 	static navigationOptions = {
 		title: 'Edit Shipping Address',
+		headerTitleStyle: {
+			color: '#2077be',
+		},
 	};
 
 	render() {

@@ -9,7 +9,10 @@ import { resetState } from '../actions';
 class AddShippingAddressScreen extends Component {
 	static navigationOptions = ({ navigation }) => ({
 		title: 'Add Shipping Address',
-		headerLeft: <HeaderBackButton title='some label' navigation={navigation} />
+		headerLeft: <HeaderBackButton title='some label' navigation={navigation} />,
+		headerTitleStyle: {
+			color: '#2077be',
+		},
 	});
 
 	render() {

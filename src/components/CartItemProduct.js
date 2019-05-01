@@ -20,13 +20,20 @@ class CartItemProduct extends Component {
 				<View style={itemTextContainerStyle}>
 					<Text 
 						style={textStyle} 
-						numberOfLines={2}
+						numberOfLines={3}
 					>
 						Product A Testing long ass name klajdfkl
 					</Text>
 				</View>
 				<View>
-					<Text style={textStyle}>1</Text>
+					<NumericInput 
+						minValue={0}
+						totalWidth={75} 
+						totalHeight={40} 
+						rounded 
+						textColor='#444444'
+						onChange={() => {}}
+					/>
 				</View>
 				<View>
 					<Text style={priceTextStyle}>IDR 1,150,000</Text>

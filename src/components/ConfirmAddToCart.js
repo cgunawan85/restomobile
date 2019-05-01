@@ -11,7 +11,8 @@ function ConfirmAddToCart({ modalVisible, onAccept, onDecline }) {
 		buttonContainerStyle,
 		numericInputContainerStyle, 
 		buttonStyle, 
-		buttonTextStyle 
+		buttonTextStyle,
+		cancelButtonTextStyle 
 	} = styles;
 
 	return (
@@ -39,7 +40,7 @@ function ConfirmAddToCart({ modalVisible, onAccept, onDecline }) {
 							style={buttonStyle} 
 							onPress={onDecline}
 						>
-							<Text>Cancel</Text>
+							<Text style={cancelButtonTextStyle}>Cancel</Text>
 						</Button>
 						<Button
 							success 
@@ -88,6 +89,9 @@ const styles = {
 	},
 	buttonTextStyle: {
 		color: 'white'
+	},
+	cancelButtonTextStyle: {
+		color: 'red'
 	}
 };
 

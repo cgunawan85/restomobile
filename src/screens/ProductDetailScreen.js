@@ -19,6 +19,7 @@ import ProductTitle from '../components/ProductTitle';
 import ProductVendor from '../components/ProductVendor';
 import ConfirmAddToCart from '../components/ConfirmAddToCart';
 import Seperator from '../components/common/Seperator';
+import SpecificationsSegmentContent from '../components/SpecificationsSegmentContent';
 	
 class ProductDetailScreen extends Component {
 	static navigationOptions = {
@@ -85,7 +86,7 @@ class ProductDetailScreen extends Component {
 		let segmentContent = null;
 		if (page === 1) {
 			segmentContent = (
-				<View style={{ paddingTop: 10, paddingBottom: 20 }}>
+				<View style={{ paddingTop: 10, paddingBottom: 30 }}>
 					<Text>
 						This is where description goes. This is where description goes.
 						This is where description goes. This is where description goes.
@@ -95,18 +96,13 @@ class ProductDetailScreen extends Component {
 			);
 		} else if (page === 2) {
 			segmentContent = (
-				<View style={{ paddingTop: 10, paddingBottom: 20 }}>
-					<Text>
-						This is where the specs go! This is where the specs go!
-						This is where the specs go! This is where the specs go!
-						This is where the specs go! This is where the specs go!
-						This is where the specs go! This is where the specs go!
-					</Text>
+				<View style={{ paddingTop: 10, paddingBottom: 30 }}>
+					<SpecificationsSegmentContent product={product} />
 				</View>
 			);
 		} else if (page === 3) {
 			segmentContent = (
-				<View style={{ paddingTop: 10, paddingBottom: 20 }}>
+				<View style={{ paddingTop: 10, paddingBottom: 30 }}>
 					<Text>
 						This is where description goes. This is where description goes.
 						This is where description goes. This is where description goes.
@@ -128,7 +124,7 @@ class ProductDetailScreen extends Component {
 						</Button>
 					</Left>
 					<Body>
-						<Title>Product Details</Title>
+						<Title style={{ color: '#2077be' }}>Product Details</Title>
 					</Body>
 					<Right>
 						<Button transparent>

@@ -1,6 +1,8 @@
 import { Toast } from 'native-base';
 import firebase from 'firebase/app';
 import { 
+	FIRST_NAME_CHANGED,
+	LAST_NAME_CHANGED,
 	EMAIL_CHANGED, 
 	PASSWORD_CHANGED, 
 	LOGIN_USER, 
@@ -22,6 +24,20 @@ function renderErrorMessage(errorMessage) {
 		buttonText: 'Try again!'
 	});
 }
+
+export const firstNameChanged = (text) => {
+	return {
+		type: FIRST_NAME_CHANGED,
+		payload: text
+	};
+};
+
+export const lastNameChanged = (text) => {
+	return {
+		type: LAST_NAME_CHANGED,
+		payload: text
+	};
+};
 
 export const emailChanged = (text) => {
 	return {

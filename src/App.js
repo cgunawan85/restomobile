@@ -24,6 +24,7 @@ import CartScreen from './screens/CartScreen';
 import ProductDetailScreen from './screens/ProductDetailScreen';
 import OrderDetailsScreen from './screens/OrderDetailsScreen';
 import VendorScreen from './screens/VendorScreen';
+import PinLocationMapScreen from './screens/PinLocationMapScreen';
 import NavigationService from './services/NavigationService';
 
 class App extends Component {
@@ -45,7 +46,17 @@ class App extends Component {
 
 const AuthStack = createStackNavigator({ LoginScreen, RegisterScreen });
 
-const HomeStack = createStackNavigator({ HomeScreen, ProductDetailScreen, VendorScreen });
+/*
+
+create VendorStack that includes VendorScreen and ProductDetailScreen
+
+create CategoryStack that includes ProductsByCategoryScreen and ProductDetailScreen
+
+create QVStack that includes ProductsByQVScreen and ProductDetailScreen
+
+*/
+
+const HomeStack = createStackNavigator({ HomeScreen, VendorScreen, ProductDetailScreen });
 
 const OrdersStack = createStackNavigator({ OrdersScreen, OrderDetailsScreen });
 
@@ -53,7 +64,8 @@ const SettingsStack = createStackNavigator({
 	SettingsScreen, 
 	ShippingAddressScreen,
 	EditShippingAddressScreen, 
-	AddShippingAddressScreen 
+	AddShippingAddressScreen,
+	PinLocationMapScreen, 
 });
 
 const CartStack = createStackNavigator({ CartScreen });
@@ -95,7 +107,8 @@ const MainTabNavigator = createBottomTabNavigator({
 }
 );
 
-const AppSwitchNavigator = createSwitchNavigator({
+const AppSwitchNavigator = createSwitchNavigator(
+{
 	AuthLoadingScreen: { screen: AuthLoadingScreen },
 	AuthStack: { screen: AuthStack },
 	Main: { screen: MainTabNavigator }

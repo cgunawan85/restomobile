@@ -4,6 +4,7 @@ import { Form, Item, Label, Input, Button, Text } from 'native-base';
 import { connect } from 'react-redux';
 import { shippingAddressFormUpdate, resetLocation, updateLongitudeAndLatitude } from '../actions';
 import { LOCATION_SUCCESS } from '../images/';
+import { withNavigation } from 'react-navigation';
 
 class ShippingAddressForm extends Component {
 	onGetLocationButtonPress() {
@@ -50,7 +51,11 @@ class ShippingAddressForm extends Component {
 		}
 		return (
 			<View style={pinLocationContainerStyle}>
-				<Button bordered style={{ alignSelf: 'center' }}>
+				<Button 
+					bordered 
+					style={{ alignSelf: 'center' }}
+					onPress={() => this.props.navigation.navigate('PinLocationMapScreen')}
+				>
 					<Text>Pin Address</Text>
 				</Button>
 				<Text style={textStyle}>or</Text>
@@ -189,6 +194,6 @@ const mapStateToProps = (state) => {
 	};
 };
 
-export default connect(mapStateToProps, 
+export default withNavigation(connect(mapStateToProps, 
 	{ shippingAddressFormUpdate, resetLocation, updateLongitudeAndLatitude }
-	)(ShippingAddressForm);
+	)(ShippingAddressForm));

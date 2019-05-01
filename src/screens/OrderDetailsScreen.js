@@ -24,6 +24,9 @@ import {
 class OrderDetailsScreen extends Component {
 	static navigationOptions = {
 		title: 'Order Details',
+		headerTitleStyle: {
+			color: '#2077be',
+		},
 	};
 
 	renderPaidOrNotPaid() {

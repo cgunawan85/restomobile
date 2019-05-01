@@ -8,6 +8,9 @@ import SettingsListItem from '../components/SettingsListItem';
 class SettingsScreen extends Component {
 	static navigationOptions = {
 		title: 'Settings',
+		headerTitleStyle: {
+			color: '#2077be',
+		},
 	};
 
 	onLogoutButtonPress() {
@@ -22,6 +25,7 @@ class SettingsScreen extends Component {
 					<SettingsListItem iconName='user' destination='HomeScreen'>My Account</SettingsListItem>
 					<SettingsListItem iconName='paper-plane' destination='ShippingAddressScreen'>Shipping Addresses</SettingsListItem>
 					<SettingsListItem iconName='support' destination='HomeScreen'>Help</SettingsListItem>
+					<SettingsListItem iconName='support' destination='HomeScreen'>Apply For Business Account</SettingsListItem>
 					<View style={{ flex: 1, justifyContent: 'flex-end' }}>
 						<Button
 							onPress={this.onLogoutButtonPress.bind(this)}
