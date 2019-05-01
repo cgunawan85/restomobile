@@ -34,9 +34,10 @@ class ShippingMethodPicker extends Component {
 								selectedValue={'key0'}
 								textStyle={pickerTextStyle}
 							>
-								<Picker.Item label="Go-Jek Instant" value="key0" />
-								<Picker.Item label="Go-Jek Same Day" value="key1" />
-								<Picker.Item label="Ninja Van" value="key2" />
+								<Picker.Item label="None" value="key0" />
+								<Picker.Item label="Go-Jek Instant" value="key1" />
+								<Picker.Item label="Go-Jek Same Day" value="key2" />
+								<Picker.Item label="Ninja Van" value="key3" />
 							</Picker>
 						</Form>
 					</View>

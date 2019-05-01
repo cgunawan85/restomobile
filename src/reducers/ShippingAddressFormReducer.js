@@ -2,7 +2,11 @@ import {
 	SHIPPING_ADDRESS_FORM_UPDATE, 
 	RESET_LOCATION, 
 	RESET_STATE, 
-	UPDATE_LONGITUDE_LATITUDE 
+	UPDATE_LONGITUDE_LATITUDE,
+	UPDATE_ADDRESS_QUERY,
+	LOOKUP_COORDINATES,
+	LOOKUP_COORDINATES_SUCCESS,
+	LOOKUP_COORDINATES_FAILED 
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -16,6 +20,9 @@ const INITIAL_STATE = {
 	error: '',
 	latitude: null,
 	longitude: null,
+	address_query: '',
+	loading: false,
+	geometry: null
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -28,6 +35,14 @@ export default (state = INITIAL_STATE, action) => {
 			return { ...state, latitude: null, longitude: null };
 		case RESET_STATE:
 			return INITIAL_STATE;
+		case UPDATE_ADDRESS_QUERY:
+			return { ...state, address_query: action.payload };
+		case LOOKUP_COORDINATES:
+			return { ...state, loading: true };
+		case LOOKUP_COORDINATES_SUCCESS:
+			return { ...state, loading: false, geometry: action.payload };
+		case LOOKUP_COORDINATES_FAILED:
+			return { ...state, loading: false };
 		default:
 			return state;
 	}

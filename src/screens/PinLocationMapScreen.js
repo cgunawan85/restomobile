@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { View, Image, TouchableOpacity, Text } from 'react-native';
+import { Container, Content, Form, Input, Item, Button, Icon, Spinner } from 'native-base';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import { connect } from 'react-redux';
-import { updateLongitudeAndLatitude } from '../actions';
+import { updateLongitudeAndLatitude, updateAddressQuery, lookupCoordinates } from '../actions';
 import { PIN_MARKER } from '../images/';
 
 /*
@@ -16,7 +17,22 @@ fetch('https://maps.googleapis.com/maps/api/geocode/json?address=' + myLat + ','
 class PinLocationMapScreen extends Component {
 	static navigationOptions = {
 		title: 'Pin Location',
+		headerTitleStyle: {
+			color: '#2077be',
+		},
 	};
+
+	constructor(props) {
+		super(props);
+		this.state = { 
+			region: { 
+				latitude: -6.21462,
+				longitude: 106.84513,
+				latitudeDelta: 0.0421,
+				longitudeDelta: 0.0421, 
+			}
+		};
+	}
 
 	onPinLocationButtonPress(longitude, latitude) {
 		this.props.updateLongitudeAndLatitude({ 
@@ -26,36 +42,68 @@ class PinLocationMapScreen extends Component {
 		this.props.navigation.goBack();
 	}
 
+	onSearchButtonPress() {
+		this.props.lookupCoordinates(this.props.address_query);
+	}
+
+	renderSpinnerOrSearchButton() {
+		if (this.props.loading) {
+			return (
+				<Spinner style={{ paddingRight: 15, height: 5 }} />
+			);
+		}
+		return (
+			<Button 
+				transparent
+				onPress={() => this.onSearchButtonPress()}
+			>
+				<Icon name='search' style={{ color: '#2077be' }} />
+			</Button>
+		);
+	}
+
 	render() {
+		//final longitude and latitude to be used, different than the one stored in state
 		let longitude = this.props.longitude;
 		let latitude = this.props.latitude;
-
 		return (
-			<View style={{ flex: 1 }}>
-				<MapView
-					provider={PROVIDER_GOOGLE}
-					style={{ flex: 1 }}
-					initialRegion={{
-						latitude: -6.21462,
-						longitude: 106.84513,
-						latitudeDelta: 0.0421,
-						longitudeDelta: 0.0421, 
-					}}
-					onRegionChangeComplete={(region) => {
-						latitude = region.latitude;
-						longitude = region.longitude;
-					}}
-				/>
-				<View style={styles.markerFixed}>
-					<Image style={styles.marker} source={PIN_MARKER} />
-					<TouchableOpacity 
-						style={styles.buttonStyle}
-						onPress={() => this.onPinLocationButtonPress(longitude, latitude)}
-					>
-						<Text style={styles.buttonTextStyle}>Pin this location</Text>
-					</TouchableOpacity>
-				</View>
-			</View>
+			<Container>
+				<Content contentContainerStyle={{ flex: 1 }}>
+					<View>
+						<Form>
+							<Item>
+								<Input 
+									placeholder="Enter your address" 
+									onChangeText={(text) => this.props.updateAddressQuery(text)}
+								/>
+								<View style={{ justifyContent: 'center' }}>
+									{this.renderSpinnerOrSearchButton()}
+								</View>
+							</Item>
+						</Form>
+					</View>
+					<View style={{ flex: 1 }}>
+						<MapView
+							provider={PROVIDER_GOOGLE}
+							style={{ flex: 1 }}
+							region={this.state.region}
+							onRegionChangeComplete={(region) => {
+								latitude = region.latitude;
+								longitude = region.longitude;
+							}}
+						/>
+						<View style={styles.markerFixed}>
+							<Image style={styles.marker} source={PIN_MARKER} />
+							<TouchableOpacity 
+								style={styles.buttonStyle}
+								onPress={() => this.onPinLocationButtonPress(longitude, latitude)}
+							>
+								<Text style={styles.buttonTextStyle}>Pin this location</Text>
+							</TouchableOpacity>
+						</View>
+					</View>
+				</Content>
+			</Container>
 		);
 	}
 }
@@ -88,8 +136,12 @@ const styles = {
 };
 
 const mapStateToProps = (state) => {
-	const { longitude, latitude } = state.shippingAddressForm;
-	return { longitude, latitude };
+	const { longitude, latitude, address_query, loading } = state.shippingAddressForm;
+	return { longitude, latitude, address_query, loading };
 };
 
-export default connect(mapStateToProps, { updateLongitudeAndLatitude })(PinLocationMapScreen);
+export default connect(mapStateToProps, { 
+	updateLongitudeAndLatitude, 
+	updateAddressQuery,
+	lookupCoordinates 
+})(PinLocationMapScreen);

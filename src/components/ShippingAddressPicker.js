@@ -34,9 +34,10 @@ class ShippingAddressPicker extends Component {
 								selectedValue={'key0'}
 								textStyle={pickerTextStyle}
 							>
-								<Picker.Item label="Home" value="key0" />
-								<Picker.Item label="Office" value="key1" />
-								<Picker.Item label="Kelapa Gading" value="key2" />
+								<Picker.Item label="None" value="key0" />
+								<Picker.Item label="Home" value="key1" />
+								<Picker.Item label="Office" value="key2" />
+								<Picker.Item label="Kelapa Gading" value="key3" />
 							</Picker>
 						</Form>
 					</View>
