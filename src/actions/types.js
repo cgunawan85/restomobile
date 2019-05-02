@@ -19,9 +19,6 @@ export const RESET_LOCATION = 'reset_location';
 export const RESET_STATE = 'reset_state';
 export const UPDATE_LONGITUDE_LATITUDE = 'update_longitude_latitude';
 export const UPDATE_ADDRESS_QUERY = 'update_address_query';
-export const LOOKUP_COORDINATES_SUCCESS = 'lookup_coordinates_success';
-export const LOOKUP_COORDINATES = 'lookup_coordinates';
-export const LOOKUP_COORDINATES_FAILED = 'lookup_coordinates_failed';
 
 // orders action
 

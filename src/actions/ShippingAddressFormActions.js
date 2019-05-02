@@ -3,12 +3,7 @@ import {
 	RESET_LOCATION, RESET_STATE, 
 	UPDATE_LONGITUDE_LATITUDE,
 	UPDATE_ADDRESS_QUERY,
-	LOOKUP_COORDINATES,
-	LOOKUP_COORDINATES_SUCCESS,
-	LOOKUP_COORDINATES_FAILED
 } from './types';
-
-const axios = require('axios');
 
 export const shippingAddressFormUpdate = ({ prop, value }) => {
 	return {
@@ -42,25 +37,3 @@ export const updateAddressQuery = (text) => {
 		payload: text
 	};
 };
-
-/* delete this?
-export const lookupCoordinates = (address) => {
-	const GEOCODE_API_KEY = 'AIzaSyAcwn0XXXM1hoSGSDQiF7h9eHMkIo2gDVc';
-	const parsed_address = address.split(' ').join('+');
-	
-	return function (dispatch) {
-		dispatch({ type: LOOKUP_COORDINATES });
-
-		axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${parsed_address}&key=${GEOCODE_API_KEY}`)
-		.then(res => {
-			dispatch({ type: LOOKUP_COORDINATES_SUCCESS, payload: res });
-			console.log(res);
-		})
-		.catch((error) => {
-			dispatch({ type: LOOKUP_COORDINATES_FAILED });
-			console.log(error);
-		});
-	};
-};
-*/
-

@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
 import { View, Image, TouchableOpacity, Text, ActivityIndicator } from 'react-native';
-import { Container, Content, Form, Input, Item, Button, Icon, Spinner } from 'native-base';
+import { Container, Content, Form, Input, Item, Button, Icon } from 'native-base';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import { connect } from 'react-redux';
-import { updateLongitudeAndLatitude, updateAddressQuery, lookupCoordinates } from '../actions';
+import { updateLongitudeAndLatitude, updateAddressQuery } from '../actions/';
 import { PIN_MARKER } from '../images/';
+import MapInput from '../components/MapInput';
 
-/*
-fetch('https://maps.googleapis.com/maps/api/geocode/json?address=' + myLat + ',' + myLon + '&key=' + myApiKey)
-        .then((response) => response.json())
-        .then((responseJson) => {
-            console.log('ADDRESS GEOCODE is BACK!! => ' + JSON.stringify(responseJson));
-})
-*/
 const axios = require('axios');
 
 class PinLocationMapScreen extends Component {
@@ -67,8 +61,8 @@ class PinLocationMapScreen extends Component {
 				region: { 
 					latitude: response.data.results[0].geometry.location.lat,
 					longitude: response.data.results[0].geometry.location.lng,
-					latitudeDelta: 0.0121,
-					longitudeDelta: 0.0121, 	
+					latitudeDelta: 0.005,
+					longitudeDelta: 0.005,
 				},
 				loading: false 
 			}))
@@ -83,7 +77,7 @@ class PinLocationMapScreen extends Component {
 			return (
 				<ActivityIndicator 
 					style={{ 
-						paddingRight: 15 
+						paddingRight: 15,
 					}} 
 				/>
 			);
@@ -102,21 +96,21 @@ class PinLocationMapScreen extends Component {
 		//final longitude and latitude to be used, different than the one stored in state
 		let longitude = this.props.longitude;
 		let latitude = this.props.latitude;
+		console.log(this.props.address_query);
 		return (
 			<Container>
 				<Content contentContainerStyle={{ flex: 1 }}>
-					<View>
-						<Form>
-							<Item>
-								<Input 
-									placeholder="Enter your address" 
-									onChangeText={(text) => this.props.updateAddressQuery(text)}
-								/>
-								<View style={{ justifyContent: 'center' }}>
-									{this.renderSpinnerOrSearchButton()}
-								</View>
-							</Item>
-						</Form>
+					<View style={{ flexDirection: 'row' }}>
+						{/*
+						<Input 
+							placeholder="Enter your address" 
+							onChangeText={(text) => this.props.updateAddressQuery(text)}
+						/>
+						*/}
+						<MapInput />
+						<View style={{ justifyContent: 'center' }}>
+							{this.renderSpinnerOrSearchButton()}
+						</View>
 					</View>
 					<View style={{ flex: 1 }}>
 						<MapView
@@ -172,12 +166,11 @@ const styles = {
 };
 
 const mapStateToProps = (state) => {
-	const { longitude, latitude, address_query, loading } = state.shippingAddressForm;
-	return { longitude, latitude, address_query, loading };
+	const { longitude, latitude, address_query } = state.shippingAddressForm;
+	return { longitude, latitude, address_query };
 };
 
 export default connect(mapStateToProps, { 
 	updateLongitudeAndLatitude, 
 	updateAddressQuery,
-	lookupCoordinates 
 })(PinLocationMapScreen);
