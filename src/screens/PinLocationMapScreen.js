@@ -65,8 +65,8 @@ class PinLocationMapScreen extends Component {
 			.catch((error) => console.log(error))
 			.then(() => this.setState({ 
 				region: { 
-					latitude: response.data.results[1].geometry.location.latitude,
-					longitude: response.data.results[1].geometry.location.longitude,
+					latitude: response.data.results[0].geometry.location.lat,
+					longitude: response.data.results[0].geometry.location.lng,
 					latitudeDelta: 0.0121,
 					longitudeDelta: 0.0121, 	
 				},
