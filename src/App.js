@@ -24,6 +24,7 @@ import CartScreen from './screens/CartScreen';
 import ProductDetailScreen from './screens/ProductDetailScreen';
 import OrderDetailsScreen from './screens/OrderDetailsScreen';
 import VendorScreen from './screens/VendorScreen';
+import ReviewsScreen from './screens/ReviewsScreen';
 import PinLocationMapScreen from './screens/PinLocationMapScreen';
 import NavigationService from './services/NavigationService';
 
@@ -46,17 +47,22 @@ class App extends Component {
 
 const AuthStack = createStackNavigator({ LoginScreen, RegisterScreen });
 
-/*
+const VendorStack = createStackNavigator({ 
+	VendorScreen, 
+	ProductDetailScreen,
+	ReviewsScreen
+});
 
-create VendorStack that includes VendorScreen and ProductDetailScreen
 
-create CategoryStack that includes ProductsByCategoryScreen and ProductDetailScreen
+//create CategoryStack that includes ProductsByCategoryScreen and ProductDetailScreen
 
-create QVStack that includes ProductsByQVScreen and ProductDetailScreen
+// create QVStack that includes ProductsByQVScreen and ProductDetailScreen
 
-*/
 
-const HomeStack = createStackNavigator({ HomeScreen, VendorScreen, ProductDetailScreen });
+const HomeStack = createStackNavigator(
+	{ HomeScreen, VendorStack, ProductDetailScreen, ReviewsScreen }, 
+	{ headerMode: 'none' }
+);
 
 const OrdersStack = createStackNavigator({ OrdersScreen, OrderDetailsScreen });
 

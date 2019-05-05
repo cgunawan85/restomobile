@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Image, TouchableOpacity, Text, ActivityIndicator } from 'react-native';
-import { Container, Content, Form, Input, Item, Button, Icon } from 'native-base';
+import { Container, Content, Button, Icon } from 'native-base';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import { connect } from 'react-redux';
 import { updateLongitudeAndLatitude, updateAddressQuery } from '../actions/';
@@ -96,7 +96,6 @@ class PinLocationMapScreen extends Component {
 		//final longitude and latitude to be used, different than the one stored in state
 		let longitude = this.props.longitude;
 		let latitude = this.props.latitude;
-		console.log(this.props.address_query);
 		return (
 			<Container>
 				<Content contentContainerStyle={{ flex: 1 }}>

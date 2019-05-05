@@ -7,7 +7,7 @@ import {
 	H2,
 	Text,
 	Icon,
-	Button 
+	Button,
 } from 'native-base';
 import LinearGradient from 'react-native-linear-gradient';
 import { products } from '../data/productData';
@@ -16,9 +16,22 @@ import Seperator from '../components/common/Seperator';
 import { LOADING_IMAGE } from '../images/';
 
 class VendorScreen extends Component {
-	static navigationOptions = {
-		title: 'Vendor Information'
-	};
+	static navigationOptions = ({ navigation }) => ({
+			title: 'Vendor Information',
+			headerTitleStyle: {
+				color: '#2077be'
+			},
+			headerLeft: (
+				<Button
+					transparent
+					onPress={() => {
+						navigation.goBack(null);
+					}}
+				>
+					<Icon name='arrow-back' type='Ionicons' />
+				</Button>
+			)
+	});
 
 	render() {
 		const vendor = this.props.navigation.getParam('vendor');
