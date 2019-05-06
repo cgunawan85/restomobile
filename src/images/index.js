@@ -9,3 +9,6 @@ export const ORDER_STATUS_4 = require('./order-status-4.png');
 export const LOCATION_SUCCESS = require('./location-success.png');
 export const LOADING_IMAGE = require('./loading-image.png');
 export const PIN_MARKER = require('./pin-marker.png');
+export const EMPTY_STAR = require('./empty-star.png');
+export const HALF_STAR = require('./half-star.png');
+export const FULL_STAR = require('./full-star.png');

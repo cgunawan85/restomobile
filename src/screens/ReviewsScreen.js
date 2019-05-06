@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { View } from 'react-native';
 import { 
 	Container, 
 	Content, 
@@ -8,12 +9,26 @@ import {
 	Button, 
 	Icon, 
 	Body, 
-	Title 
+	Title,
+	Text 
 } from 'native-base';
 import ReviewsList from '../components/ReviewsList';
+import WriteAReviewModal from '../components/WriteAReviewModal';
 
 class ReviewsScreen extends Component {
+	constructor(props) {
+		super(props);
+		this.state = { 
+			modalVisible: false
+		};
+	}
+
+	onDecline() {
+		this.setState({ modalVisible: false });
+	}
+
 	render() {
+		const { addReviewButtonContainerStyle } = styles;
 		return (
 			<Container>
 				<Header>
@@ -32,10 +47,28 @@ class ReviewsScreen extends Component {
 				</Header>
 				<Content>
 					<ReviewsList />
+					<WriteAReviewModal 
+						modalVisible={this.state.modalVisible} 
+						onDecline={this.onDecline.bind(this)}
+					/>
 				</Content>
+				<View style={addReviewButtonContainerStyle}>
+					<Button full onPress={() => this.setState({ modalVisible: true })}>
+						<Text>Write a review</Text>
+					</Button>
+				</View>
 			</Container>
 		);
 	}
 }
+
+const styles = {
+	addReviewButtonContainerStyle: {
+		position: 'absolute',
+		bottom: 0,
+		right: 0,
+		left: 0
+	}
+};
 
 export default ReviewsScreen;

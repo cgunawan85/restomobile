@@ -20,7 +20,11 @@ export const RESET_STATE = 'reset_state';
 export const UPDATE_LONGITUDE_LATITUDE = 'update_longitude_latitude';
 export const UPDATE_ADDRESS_QUERY = 'update_address_query';
 
-// orders action
+// orders actions
 
 export const SHOW_THANK_YOU_MODAL = 'show_thank_you_modal';
 export const HIDE_THANK_YOU_MODAL = 'hide_thank_you_modal';
+
+// reviews actions
+
+export const ADD_REVIEW_FORM_UPDATE = 'add_review_form_udpate';
