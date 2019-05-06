@@ -11,8 +11,6 @@ class WriteAReview extends Component {
 	}
 
 	render() {
-		console.log(this.props.rating);
-		console.log(this.props.review);
 		const { 
 				containerStyle, 
 				textStyle, 

@@ -28,3 +28,4 @@ export const HIDE_THANK_YOU_MODAL = 'hide_thank_you_modal';
 // reviews actions
 
 export const ADD_REVIEW_FORM_UPDATE = 'add_review_form_udpate';
+export const RESET_REVIEW_FORM = 'reset_review_form';

@@ -12,8 +12,10 @@ import {
 	Title,
 	Text 
 } from 'native-base';
+import { connect } from 'react-redux';
 import ReviewsList from '../components/ReviewsList';
 import WriteAReviewModal from '../components/WriteAReviewModal';
+import { resetReviewForm } from '../actions/';
 
 class ReviewsScreen extends Component {
 	constructor(props) {
@@ -25,6 +27,7 @@ class ReviewsScreen extends Component {
 
 	onDecline() {
 		this.setState({ modalVisible: false });
+		this.props.resetReviewForm();
 	}
 
 	render() {
@@ -71,4 +74,4 @@ const styles = {
 	}
 };
 
-export default ReviewsScreen;
+export default connect(null, { resetReviewForm })(ReviewsScreen);

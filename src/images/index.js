@@ -12,3 +12,7 @@ export const PIN_MARKER = require('./pin-marker.png');
 export const EMPTY_STAR = require('./empty-star.png');
 export const HALF_STAR = require('./half-star.png');
 export const FULL_STAR = require('./full-star.png');
+export const BRONZE_BADGE = require('./icon-badge-bronze.png');
+export const SILVER_BADGE = require('./icon-badge-silver.png');
+export const GOLD_BADGE = require('./icon-badge-gold.png');
+export const DIAMOND_BADGE = require('./icon-badge-diamond.png');
