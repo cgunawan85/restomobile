@@ -18,6 +18,7 @@ const INITIAL_STATE = {
 	email: '',
 	password: '',
 	user: null,
+	jwt: '',
 	error: '',
 	loading: false
 };

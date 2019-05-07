@@ -9,6 +9,7 @@ import firebase from 'firebase/app';
 require('firebase/auth');
 
 class AuthLoadingScreen extends Component {
+	// change to check if JWT present
 	componentDidMount() {
 		const config = {
 			apiKey: 'AIzaSyCLhh7KQQQ6MRTWY1YM9uMADxYTdOX7gXA',

@@ -97,11 +97,18 @@ class VendorScreen extends Component {
 								style={{ fontSize: 18 }} 
 							/>
 							<Text style={vendorInfoTitleStyle}>Rating</Text>
-							<Text style={vendorInfoContentStyle}>{vendor.rating}</Text>
+							<Text style={vendorInfoContentStyle}>{`${vendor.rating}%`}</Text>
 						</View>
 					</Card>
 					<Seperator />
-					<H2 style={titleStyle}>Products</H2>
+					<View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
+						<H2 style={titleStyle}>Products</H2>
+						<View style={{ justifyContent: 'center', paddingRight: 10, paddingTop: 5 }}>
+							<Button transparent>
+								<Text style={{ color: 'tomato' }}>View all</Text>
+							</Button>
+						</View>
+					</View>
 					<ProductList products={products} />
 				</Content>
 			</Container>

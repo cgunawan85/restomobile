@@ -1,5 +1,6 @@
 import { Toast } from 'native-base';
 import firebase from 'firebase/app';
+import axios from 'axios';
 import { 
 	FIRST_NAME_CHANGED,
 	LAST_NAME_CHANGED,
@@ -14,6 +15,7 @@ import {
 	REGISTER_USER_FAIL
 } from './types';
 import NavigationService from '../services/NavigationService';
+import deviceStorage from '../services/deviceStorage';
 
 require('firebase/auth');
 
@@ -67,6 +69,26 @@ export const loginUser = ({ email, password }) => {
 		});
 	};
 };
+
+/*
+export const loginUserTest = ({ email, password }) => {
+	return (dispatch) => {
+		dispatch({ type: LOGIN_USER });
+		axios.post('https://www.restodepot.id/api/v1/signin', { email: email, password: password })
+			.then((response) => {
+				deviceStorage.saveKey('id_token', response.data.jwt);
+				dispatch({ type: LOGIN_USER_SUCCESS, payload: response.user });
+				//modify reducer case to add user and jwt
+				NavigationService.navigate('Main');
+			})
+			.catch((error) => {
+				renderErrorMessage(error.message);
+				dispatch({ type: LOGIN_USER_FAIL });
+			});
+	};
+};
+*/
+
 
 export const registerUser = ({ email, password }) => {
 	return (dispatch) => {
