@@ -40,7 +40,10 @@ class HomeScreen extends Component {
 					<View style={titleContainerStyle}>
 						<Text style={titleTextStyle}>Best Sellers</Text>
 						<View style={buttonContainerStyle}>
-							<Button transparent>
+							<Button 
+								transparent 
+								onPress={() => this.props.navigation.navigate('QVStack', { qv: 'Best Sellers' })}
+							>
 								<Text style={buttonTextStyle}>View All</Text>
 							</Button>
 						</View>
@@ -53,7 +56,10 @@ class HomeScreen extends Component {
 					<View style={titleContainerStyle}>
 						<Text style={titleTextStyle}>Recently Bought</Text>
 						<View style={buttonContainerStyle}>
-							<Button transparent>
+							<Button 
+								transparent 
+								onPress={() => this.props.navigation.navigate('QVStack', { qv: 'Recently Bought' })}
+							>
 								<Text style={buttonTextStyle}>View All</Text>
 							</Button>
 						</View>
@@ -63,7 +69,10 @@ class HomeScreen extends Component {
 					<View style={titleContainerStyle}>
 						<Text style={titleTextStyle}>Best Deals</Text>
 						<View style={buttonContainerStyle}>
-							<Button transparent>
+							<Button 
+								transparent 
+								onPress={() => this.props.navigation.navigate('QVStack', { qv: 'Best Deals' })}
+							>
 								<Text style={buttonTextStyle}>View All</Text>
 							</Button>
 						</View>
@@ -83,7 +92,10 @@ class HomeScreen extends Component {
 					<View style={titleContainerStyle}>
 						<Text style={titleTextStyle}>Products</Text>
 						<View style={buttonContainerStyle}>
-							<Button transparent>
+							<Button 
+								transparent
+								onPress={() => this.props.navigation.navigate('AllProductsStack')}
+							>
 								<Text style={buttonTextStyle}>View All</Text>
 							</Button>
 						</View>

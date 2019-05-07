@@ -21,6 +21,10 @@ import ShippingAddressScreen from './screens/ShippingAddressScreen';
 import EditShippingAddressScreen from './screens/EditShippingAddressScreen';
 import AddShippingAddressScreen from './screens/AddShippingAddressScreen';
 import CartScreen from './screens/CartScreen';
+import CategoriesScreen from './screens/CategoriesScreen';
+import QVScreen from './screens/QVScreen';
+import AllProductsScreen from './screens/AllProductsScreen';
+import SortByScreen from './screens/SortByScreen';
 import ProductDetailScreen from './screens/ProductDetailScreen';
 import OrderDetailsScreen from './screens/OrderDetailsScreen';
 import VendorScreen from './screens/VendorScreen';
@@ -53,15 +57,34 @@ const VendorStack = createStackNavigator({
 	ReviewsScreen
 });
 
+const CategoriesStack = createStackNavigator(
+	{ CategoriesScreen, SortByScreen, ProductDetailScreen },
+	{ headerMode: 'none' }
+);
 
-//create CategoryStack that includes ProductsByCategoryScreen and ProductDetailScreen
+const QVStack = createStackNavigator(
+	{ QVScreen, SortByScreen, ProductDetailScreen },
+	{ headerMode: 'none' }
+);
 
-// create QVStack that includes ProductsByQVScreen and ProductDetailScreen
-
+const AllProductsStack = createStackNavigator(
+	{ AllProductsScreen, ProductDetailScreen },
+	{ headerMode: 'none' }
+);
 
 const HomeStack = createStackNavigator(
-	{ HomeScreen, VendorStack, ProductDetailScreen, ReviewsScreen }, 
-	{ headerMode: 'none' }
+{ 
+	HomeScreen, 
+	CategoriesStack, 
+	QVStack, 
+	VendorStack, 
+	AllProductsStack, 
+	ProductDetailScreen, 
+	ReviewsScreen 
+}, 
+{ 
+	headerMode: 'none' 
+}
 );
 
 const OrdersStack = createStackNavigator({ OrdersScreen, OrderDetailsScreen });
